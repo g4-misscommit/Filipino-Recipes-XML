@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<recipes>
+  <recipe id="1">
+    <title>Adobo</title>
+    <category>Lunch</category>
+    <prepTime>45 mins</prepTime>
+    <ingredients>
+      <item>Pork</item>
+      <item>Soy Sauce</item>
+      <item>Vinegar</item>
+    </ingredients>
+    <instructions>Marinate pork... then simmer.</instructions>
+  </recipe>
+
+
+  <!-- dagdagan niyo dito recipes -->
+
+
+
+</recipes>
