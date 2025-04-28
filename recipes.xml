@@ -10,11 +10,13 @@
       <item>Soy Sauce</item>
       <item>Vinegar</item>
     </ingredients>
-    <instructions>Marinate pork... then simmer.</instructions>
+  <instructions>
+    <step>Marinate pork in soy sauce and vinegar for 30 minutes.</step>
+    <step>Heat oil in a pan and fry pork until browned.</step>
+    <step>Add marinade and simmer until pork is tender.</step>
+  </instructions>
+    <image>images/adobo.jpg</image>
   </recipe>
-
-
-  <!-- dagdagan niyo dito recipes -->
 
 
 
