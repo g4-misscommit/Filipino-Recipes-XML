@@ -7,3 +7,5 @@ CREATE TABLE recipes (
     instructions TEXT NOT NULL,
     image VARCHAR(255)
 );
+
+

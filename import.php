@@ -1,13 +1,11 @@
 <?php
 include('db.php');
 
-if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['imported_file'])) {
-    $fileTmpPath = $_FILES['imported_file']['tmp_name'];
-    $fileType = $_FILES['imported_file']['type'];
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $fileTmpPath = 'tmp_preview.xml';
 
-    // Validate file type
-    if ($fileType != 'text/xml' && $fileType != 'application/xml') {
-        die("Error: Please upload a valid XML file.");
+    if (!file_exists($fileTmpPath)) {
+        die("Error: Preview file not found.");
     }
 
     $importedXml = simplexml_load_file($fileTmpPath);
@@ -26,13 +24,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['imported_file'])) {
             !isset($newRecipe->instructions) ||
             !isset($newRecipe->image)
         ) {
-            continue;
+            continue; // skip malformed recipes
         }
 
         $titleCheck = $conn->real_escape_string((string)$newRecipe->title);
         $checkQuery = $conn->query("SELECT id FROM recipes WHERE title = '$titleCheck' LIMIT 1");
         if ($checkQuery->num_rows > 0) {
-            continue;
+            continue; // skip duplicates
         }
 
         $title = (string)$newRecipe->title;
@@ -60,7 +58,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_FILES['imported_file'])) {
         $addedCount++;
     }
 
-    echo "$addedCount new recipe(s) imported successfully. <a href='admin.php'>Back to Admin</a>";
-} else {
-    echo "No file uploaded.";
+    header("Location: admin.php?import_success=$addedCount");
+    exit;
+    } else {
+    echo "No file uploaded. Wala nganiiii";
 }

@@ -114,41 +114,52 @@ include('db.php');
     </form>
   </div>
 
-  <!-- Manage Recipes Section -->
+<!-- Manage Recipes Section -->
 <div class="form-section">
   <h2 class="section-title">Manage Existing Recipes</h2>
-  <div class="table-responsive">
-    <table class="table table-striped table-bordered">
-      <thead class="table-dark">
-        <tr>
-          <th>ID</th>
-          <th>Title</th>
-          <th>Category</th>
-          <th>Prep Time</th>
-          <th>Actions</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php
-        $result = $conn->query("SELECT * FROM recipes ORDER BY id DESC");
-        while ($row = $result->fetch_assoc()):
-        ?>
-        <tr>
-          <td><?php echo $row['id']; ?></td>
-          <td><?php echo htmlspecialchars($row['title']); ?></td>
-          <td><?php echo htmlspecialchars($row['category']); ?></td>
-          <td><?php echo htmlspecialchars($row['prep_time']); ?></td>
-          <td>
-            <a href="delete_recipe.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Delete this recipe?')">
-              Delete
-            </a>
-          </td>
-        </tr>
-        <?php endwhile; ?>
-      </tbody>
-    </table>
-  </div>
+  <form method="POST" action="delete_recipe.php" onsubmit="return confirm('Are you sure you want to delete the selected recipe(s)?');">
+    <div class="mb-3">
+      <button type="submit" class="btn btn-danger btn-sm">Delete Selected</button>
+      <button type="submit" name="delete_all" value="1" class="btn btn-warning btn-sm" onclick="return confirm('Delete ALL recipes? This cannot be undone.')">Delete All</button>
+    </div>
+
+    <div class="table-responsive">
+      <table class="table table-striped table-bordered">
+        <thead class="table-dark">
+          <tr>
+            <th><input type="checkbox" id="selectAll"></th>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Prep Time</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+            $result = $conn->query("SELECT * FROM recipes ORDER BY id DESC");
+            while ($row = $result->fetch_assoc()):
+          ?>
+            <tr>
+              <td><input type="checkbox" name="recipe_ids[]" value="<?php echo $row['id']; ?>"></td>
+              <td><?php echo $row['id']; ?></td>
+              <td><?php echo htmlspecialchars($row['title']); ?></td>
+              <td><?php echo htmlspecialchars($row['category']); ?></td>
+              <td><?php echo htmlspecialchars($row['prep_time']); ?></td>
+            </tr>
+          <?php endwhile; ?>
+        </tbody>
+      </table>
+    </div>
+  </form>
 </div>
+
+<!-- JavaScript to handle select all -->
+<script>
+  document.getElementById('selectAll').addEventListener('change', function () {
+    const checkboxes = document.querySelectorAll('input[name="recipe_ids[]"]');
+    checkboxes.forEach(cb => cb.checked = this.checked);
+  });
+</script>
 
 
   <!-- Export Recipes Section -->
@@ -159,24 +170,15 @@ include('db.php');
 </div>
 
 
-  <!-- Import Recipes Section -->
-  <div class="import-section">
-    <h2 class="section-title">Import Recipes</h2>
-    <form action="import.php" method="POST" enctype="multipart/form-data">
-      <div class="mb-3">
-        <input class="form-control" type="file" name="imported_file" required>
-      </div>
-      <button type="submit" class="btn btn-primary">Upload and Import</button>
-    </form>
-  </div>
+<!-- Import Recipes Section -->
+<div class="import-section">
+  <h2 class="section-title">Import Recipes</h2>
+  <form id="uploadForm" enctype="multipart/form-data">
+    <label for="xml_file" class="form-label">Upload Recipe XML</label>
+    <input type="file" name="xml_file" id="xml_file" class="form-control" accept=".xml" required>
+    <button type="submit" class="btn btn-primary mt-2">Preview XML</button>
+  </form>
 </div>
-
-<!-- Upload Form -->
-<form id="uploadForm" enctype="multipart/form-data" class="mb-3">
-  <label for="xml_file" class="form-label">Upload Recipe XML</label>
-  <input type="file" name="xml_file" id="xml_file" class="form-control" accept=".xml" required>
-  <button type="submit" class="btn btn-primary mt-2">Preview XML</button>
-</form>
 
 <!-- Preview Modal -->
 <div class="modal fade" id="previewModal" tabindex="-1" aria-hidden="true">
@@ -190,12 +192,30 @@ include('db.php');
         <iframe id="previewFrame" src="" width="100%" height="500" style="border:none;"></iframe>
       </div>
       <div class="modal-footer">
-        <a href="import.php" class="btn btn-success">Import to Database</a>
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <form method="POST" action="import.php">
+          <input type="hidden" name="final_import" value="1">
+          <button type="submit" class="btn btn-success">Import to Database</button>
+        </form>
       </div>
     </div>
   </div>
 </div>
+
+<!-- Success Modal -->
+<div class="modal fade" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header bg-success text-white">
+        <h5 class="modal-title" id="successModalLabel">Import Successful</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p id="successMessage"></p>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
 <script>
@@ -239,6 +259,21 @@ function addInstruction() {
       alert('Failed to upload XML for preview.');
     }
   });
+</script>
+
+<script>
+  // Check URL for import_success parameter
+  const urlParams = new URLSearchParams(window.location.search);
+  const importCount = urlParams.get('import_success');
+
+  if (importCount) {
+    document.getElementById('successMessage').innerText =
+      `${importCount} new recipe(s) imported successfully.`;
+    new bootstrap.Modal(document.getElementById('successModal')).show();
+
+    // Clean up the URL to avoid repeat modals on reload
+    window.history.replaceState({}, document.title, window.location.pathname);
+  }
 </script>
 
 
