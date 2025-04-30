@@ -1,38 +1,55 @@
 <?php
-// Connect to database
-$conn = new mysqli("localhost", "root", "Shimpaishinaide#999", "FilipinoRecipes");
-
-// Check connection
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
+include('db.php');
 
 // Get form data
 $title = $_POST['title'];
 $category = $_POST['category'];
-$ingredients = $_POST['ingredients'];
-$instructions = $_POST['instructions'];
+$prepTime = $_POST['prepTime'];
+$image = $_POST['image'];
+$ingredients = $_POST['ingredients']; // this is an array
+$instructions = $_POST['instructions']; // this is an array
 
-// Insert into DB
-$stmt = $conn->prepare("INSERT INTO recipes (title, category, ingredients, instructions) VALUES (?, ?, ?, ?)");
-$stmt->bind_param("ssss", $title, $category, $ingredients, $instructions);
+// Convert arrays to strings for DB
+$ingredientsStr = implode('; ', $ingredients);
+$instructionsStr = implode('; ', $instructions);
+
+// Insert into database
+$stmt = $conn->prepare("INSERT INTO recipes (title, category, prepTime, ingredients, instructions, image) VALUES (?, ?, ?, ?, ?, ?)");
+$stmt->bind_param("ssssss", $title, $category, $prepTime, $ingredientsStr, $instructionsStr, $image);
 $stmt->execute();
 
-// Now regenerate XML
+// Regenerate XML from database
 $result = $conn->query("SELECT * FROM recipes");
 $xml = new SimpleXMLElement('<recipes/>');
 
 while($row = $result->fetch_assoc()) {
     $recipe = $xml->addChild('recipe');
+    $recipe->addAttribute('id', $row['id']);
     $recipe->addChild('title', htmlspecialchars($row['title']));
     $recipe->addChild('category', htmlspecialchars($row['category']));
-    $recipe->addChild('ingredients', htmlspecialchars($row['ingredients']));
-    $recipe->addChild('instructions', htmlspecialchars($row['instructions']));
+    $recipe->addChild('prepTime', htmlspecialchars($row['prepTime']));
+
+    $ingredientsEl = $recipe->addChild('ingredients');
+    foreach (explode(';', $row['ingredients']) as $item) {
+        $trimmed = trim($item);
+        if ($trimmed) {
+            $ingredientsEl->addChild('item', htmlspecialchars($trimmed));
+        }
+    }
+
+    $instructionsEl = $recipe->addChild('instructions');
+    foreach (explode(';', $row['instructions']) as $step) {
+        $trimmed = trim($step);
+        if ($trimmed) {
+            $instructionsEl->addChild('step', htmlspecialchars($trimmed));
+        }
+    }
+
+    $recipe->addChild('image', htmlspecialchars($row['image']));
 }
 
-// Save to XML file
 $xml->asXML('recipes.xml');
+header("Location: admin.php?success=1");
+exit;
 
-// Redirect back to admin page
-header("Location: admin.php");
 ?>
