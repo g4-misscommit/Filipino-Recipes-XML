@@ -1,25 +1,27 @@
 <?php
-$xml = simplexml_load_file('recipes.xml');
+include('db.php');
 
-// Get the recipe ID from the query string
 $recipeId = $_GET['id'] ?? null;
 $selectedRecipe = null;
 
-// Search for the recipe by ID
 if ($recipeId) {
-  foreach ($xml->recipe as $recipe) {
-    if ((string)$recipe['id'] === $recipeId) {
-      $selectedRecipe = $recipe;
-      break;
-    }
-  }
+  $stmt = $conn->prepare("SELECT * FROM recipes WHERE id = ?");
+  $stmt->bind_param("i", $recipeId);
+  $stmt->execute();
+  $result = $stmt->get_result();
+  $selectedRecipe = $result->fetch_assoc();
 }
 
 if (!$selectedRecipe) {
   echo "<h2>Recipe not found.</h2>";
   exit;
 }
+
+// Convert ingredients and instructions back to array
+$ingredients = explode(';', $selectedRecipe['ingredients']);
+$instructions = explode(';', $selectedRecipe['instructions']);
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -97,8 +99,10 @@ if (!$selectedRecipe) {
   <h1 class="recipe-title"><?php echo htmlspecialchars($selectedRecipe->title); ?> Recipe</h1>
 
   <p class="recipe-description">
-    Category: <?php echo htmlspecialchars($selectedRecipe->category); ?>
+    Category: <?php echo htmlspecialchars($selectedRecipe->category); ?><br>
+    Prep Time: <?php echo htmlspecialchars($selectedRecipe->prepTime); ?>
   </p>
+
 
   <div class="section-title">Ingredients</div>
   <ul>

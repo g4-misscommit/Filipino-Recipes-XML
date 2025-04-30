@@ -1,5 +1,8 @@
 <?php
-$xml = simplexml_load_file('recipes.xml');
+include('db.php');
+
+// Fetch all recipes from the database
+$result = $conn->query("SELECT * FROM recipes ORDER BY id DESC");
 ?>
 
 <!DOCTYPE html>
@@ -117,23 +120,24 @@ $xml = simplexml_load_file('recipes.xml');
 <!-- Recipe Grid -->
 <div class="container mt-4">
   <div class="row g-4">
-    <?php foreach ($xml->recipe as $recipe): ?>
+    <?php while ($recipe = $result->fetch_assoc()): ?>
       <div class="col-md-4 col-sm-6">
         <div class="card">
           <div class="header">
-            <img src="<?php echo htmlspecialchars($recipe->image); ?>" alt="<?php echo htmlspecialchars($recipe->title); ?>">
+            <img src="<?php echo htmlspecialchars($recipe['image']); ?>" alt="<?php echo htmlspecialchars($recipe['title']); ?>">
           </div>
           <div class="text">
-            <h1 class="food"><?php echo htmlspecialchars($recipe->title); ?></h1>
-            <i class="fa fa-clock"> <?php echo htmlspecialchars($recipe->prepTime); ?></i>
+            <h1 class="food"><?php echo htmlspecialchars($recipe['title']); ?></h1>
+            <i class="fa fa-clock"> <?php echo htmlspecialchars($recipe['prep_time']); ?></i>
             <p class="info">Explore this delicious Filipino recipe and bring joy to your table.</p>
           </div>
           <a href="recipe_detail.php?id=<?php echo $recipe['id']; ?>" class="btn">Let's Cook!</a>
-          </div>
+        </div>
       </div>
-    <?php endforeach; ?>
+    <?php endwhile; ?>
   </div>
 </div>
+
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>

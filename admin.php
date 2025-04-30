@@ -1,6 +1,7 @@
 <?php
 include('db.php');
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -71,10 +72,16 @@ include('db.php');
           <label class="form-label">Title:</label>
           <input type="text" class="form-control" name="title" required>
         </div>
-        <div class="col-md-6 mb-3">
-          <label class="form-label">Category:</label>
-          <input type="text" class="form-control" name="category" required>
-        </div>
+          <div class="col-md-6 mb-3">
+            <label class="form-label">Category:</label>
+            <select class="form-select" name="category" required>
+              <option value="">Select Category</option>
+              <option value="Breakfast">Breakfast</option>
+              <option value="Lunch">Lunch</option>
+              <option value="Dinner">Dinner</option>
+              <option value="Merienda">Merienda</option>
+            </select>
+          </div>
         <div class="col-md-6 mb-3">
           <label class="form-label">Preparation Time:</label>
           <input type="text" class="form-control" name="prepTime" required>
@@ -107,11 +114,50 @@ include('db.php');
     </form>
   </div>
 
+  <!-- Manage Recipes Section -->
+<div class="form-section">
+  <h2 class="section-title">Manage Existing Recipes</h2>
+  <div class="table-responsive">
+    <table class="table table-striped table-bordered">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Title</th>
+          <th>Category</th>
+          <th>Prep Time</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <?php
+        $result = $conn->query("SELECT * FROM recipes ORDER BY id DESC");
+        while ($row = $result->fetch_assoc()):
+        ?>
+        <tr>
+          <td><?php echo $row['id']; ?></td>
+          <td><?php echo htmlspecialchars($row['title']); ?></td>
+          <td><?php echo htmlspecialchars($row['category']); ?></td>
+          <td><?php echo htmlspecialchars($row['prep_time']); ?></td>
+          <td>
+            <a href="delete_recipe.php?id=<?php echo $row['id']; ?>" class="btn btn-danger btn-sm" onclick="return confirm('Delete this recipe?')">
+              Delete
+            </a>
+          </td>
+        </tr>
+        <?php endwhile; ?>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
   <!-- Export Recipes Section -->
   <div class="export-section text-center">
-    <h2 class="section-title">Export Recipes</h2>
-    <a href="export.php" class="btn btn-success">Download Recipes XML</a>
-  </div>
+  <h2 class="section-title">Export Recipes</h2>
+  <a href="export.php" class="btn btn-success m-2">Export as XML</a>
+  <a href="export_csv.php" class="btn btn-warning m-2">Export as CSV</a>
+</div>
+
 
   <!-- Import Recipes Section -->
   <div class="import-section">
@@ -123,8 +169,34 @@ include('db.php');
       <button type="submit" class="btn btn-primary">Upload and Import</button>
     </form>
   </div>
-
 </div>
+
+<!-- Upload Form -->
+<form id="uploadForm" enctype="multipart/form-data" class="mb-3">
+  <label for="xml_file" class="form-label">Upload Recipe XML</label>
+  <input type="file" name="xml_file" id="xml_file" class="form-control" accept=".xml" required>
+  <button type="submit" class="btn btn-primary mt-2">Preview XML</button>
+</form>
+
+<!-- Preview Modal -->
+<div class="modal fade" id="previewModal" tabindex="-1" aria-hidden="true">
+  <div class="modal-dialog modal-lg modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Recipe Preview</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <iframe id="previewFrame" src="" width="100%" height="500" style="border:none;"></iframe>
+      </div>
+      <div class="modal-footer">
+        <a href="import.php" class="btn btn-success">Import to Database</a>
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <script>
 function addIngredient() {
@@ -148,8 +220,29 @@ function addInstruction() {
 }
 </script>
 
+<script>
+  const uploadForm = document.getElementById('uploadForm');
+
+  uploadForm.addEventListener('submit', async function (e) {
+    e.preventDefault();
+    const formData = new FormData(uploadForm);
+
+    const response = await fetch('upload_preview.php', {
+      method: 'POST',
+      body: formData
+    });
+
+    if (response.ok) {
+      document.getElementById('previewFrame').src = 'preview.php';
+      new bootstrap.Modal(document.getElementById('previewModal')).show();
+    } else {
+      alert('Failed to upload XML for preview.');
+    }
+  });
+</script>
+
+
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
-
 

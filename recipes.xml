@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <recipes>
   <recipe id="1">
   <title>Tapsilog</title>
@@ -5083,4 +5082,4 @@
 
 
 
-</recipes>
+<recipe id="231"><title>Inihaw na Bangus</title><category>Lunch</category><prepTime>40 mins</prepTime><ingredients><item>Bangus</item><item>Garlic</item><item>Onion</item></ingredients><instructions><step>stuff the fish with the ingredients </step><step/></instructions><image>adoboss.png</image></recipe></recipes>
