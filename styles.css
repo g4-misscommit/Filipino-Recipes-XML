@@ -1,0 +1,67 @@
+.border-dashed {
+    border: 5px dashed #ccc;
+    border-radius: 10px;
+    padding: 30px;
+    background-color: #fdfdfd;
+    cursor: pointer;
+    transition: border-color 0.3s ease;
+    min-height: 240px;
+    position: relative;
+  }
+  
+  .border-dashed.dragover {
+    border-color: #a0522d;
+    background-color: #fffaf0;
+  }
+  
+  #drop-message {
+    color: #777;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .image-wrapper {
+    max-width: 180px;
+    max-height: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+  }
+  
+  
+  #image-preview {
+    max-height: 100%;
+    object-fit: cover;
+    width: 180px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    position: center;
+  }
+  .section-title {
+    font-weight: bold;
+    font-size: 22px;
+    margin-top: 40px;
+    margin-bottom: 20px;
+  }
+  
+  .card.text-center a {
+    text-decoration: none;
+  }
+  
+  .card.text-center img {
+    border-radius: 12px;
+    background-color: #ddd;
+  }
+
+ 
+  
+  

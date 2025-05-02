@@ -6,9 +6,24 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   $title = trim($_POST['title']);
   $category = $_POST['category'];
   $prepTime = $_POST['prepTime'];
-  $image = $_POST['image'];
   $ingredients = $_POST['ingredients'];
   $instructions = $_POST['instructions'];
+
+  // Handle image upload
+  $imagePath = '';
+  if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
+    $uploadDir = 'resources/';
+    $fileName = basename($_FILES['image']['name']);
+    $targetFile = $uploadDir . $fileName;
+
+    if (move_uploaded_file($_FILES['image']['tmp_name'], $targetFile)) {
+      $imagePath = $targetFile;
+    } else {
+      die("Error uploading image.");
+    }
+  } else {
+    die("Image upload failed or missing.");
+  }
 
   // Check for duplicate title in DB
   $escapedTitle = $conn->real_escape_string($title);
@@ -23,7 +38,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
   $stmt = $conn->prepare("INSERT INTO recipes (title, category, prep_time, ingredients, instructions, image) VALUES (?, ?, ?, ?, ?, ?)");
   if ($stmt) {
-    $stmt->bind_param("ssssss", $title, $category, $prepTime, $ingredientsStr, $instructionsStr, $image);
+    $stmt->bind_param("ssssss", $title, $category, $prepTime, $ingredientsStr, $instructionsStr, $imagePath);
     $stmt->execute();
 
     // Load existing XML or create a new one
@@ -36,7 +51,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     }
     $newId = $lastId + 1;
 
-    // Add new recipe
+    // Add new recipe to XML
     $recipe = $xml->addChild('recipe');
     $recipe->addAttribute('id', $newId);
     $recipe->addChild('title', htmlspecialchars($title));
@@ -53,11 +68,11 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       $instructionsEl->addChild('step', htmlspecialchars($step));
     }
 
-    $recipe->addChild('image', htmlspecialchars($image));
+    $recipe->addChild('image', htmlspecialchars($imagePath));
 
     $xml->asXML('recipes.xml');
 
-    // Show success modal instead of redirect
+    // Show success modal
     echo <<<HTML
 <!DOCTYPE html>
 <html lang="en">
@@ -68,7 +83,6 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 </head>
 <body>
 
-<!-- Success Modal -->
 <div class="modal fade show" id="successModal" tabindex="-1" aria-labelledby="successModalLabel" style="display:block;" aria-modal="true" role="dialog">
   <div class="modal-dialog">
     <div class="modal-content">

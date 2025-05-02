@@ -10,6 +10,7 @@ include('db.php');
   <title>Admin Dashboard - SimplyTaste</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
 
   <style>
     body {
@@ -66,8 +67,8 @@ include('db.php');
   <!-- Add New Recipe Section -->
   <div class="form-section">
     <h2 class="section-title">Add a New Recipe</h2>
-    <form action="add_recipe.php" method="POST">
-      <div class="row">
+    <form action="add_recipe.php" method="POST" enctype="multipart/form-data">
+    <div class="row">
         <div class="col-md-6 mb-3">
           <label class="form-label">Title:</label>
           <input type="text" class="form-control" name="title" required>
@@ -86,29 +87,42 @@ include('db.php');
           <label class="form-label">Preparation Time:</label>
           <input type="text" class="form-control" name="prepTime" required>
         </div>
+
         <div class="col-md-6 mb-3">
-          <label class="form-label">Image Filename (e.g., resources/adobo.jpg):</label>
-          <input type="text" class="form-control" name="image" required>
+          <label class="form-label">Upload Recipe Image:</label>
+          <div id="drop-area" class="border-dashed text-center" onclick="document.getElementById('image-input').click();">
+            <input type="file" id="image-input" name="image" accept="image/*" onchange="previewImage(event)" hidden required>
+
+            <div id="drop-message">
+              <i class="bi bi-upload" style="font-size: 2rem; color: #999;"></i>
+              <p class="text-muted">Click or drag image here</p>
+            </div>
+
+            <div class="image-wrapper mt-2 position-relative" style="display:none;">
+              <img id="image-preview" class="img-fluid rounded" alt="Preview" />
+              <button type="button" class="btn-close position-absolute top-0 end-0 m-1" aria-label="Close" onclick="removePreview()"></button>
+            </div>
+          </div>
         </div>
       </div>
 
-      <!-- Dynamic Ingredients -->
-      <div class="mb-3">
-        <label class="form-label">Ingredients:</label>
-        <div id="ingredients-list">
-          <input type="text" class="form-control mb-2" name="ingredients[]" placeholder="Enter an ingredient" required>
+        <!-- Dynamic Ingredients -->
+        <div class="mb-3">
+          <label class="form-label">Ingredients:</label>
+          <div id="ingredients-list">
+            <input type="text" class="form-control mb-2" name="ingredients[]" placeholder="Enter an ingredient" required>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-primary" onclick="addIngredient()"><i class="bi bi-plus"></i> Add Ingredient</button>
         </div>
-        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addIngredient()"><i class="bi bi-plus"></i> Add Ingredient</button>
-      </div>
 
-      <!-- Dynamic Instructions -->
-      <div class="mb-3">
-        <label class="form-label">Instructions:</label>
-        <div id="instructions-list">
-          <input type="text" class="form-control mb-2" name="instructions[]" placeholder="Enter a step" required>
+        <!-- Dynamic Instructions -->
+        <div class="mb-3">
+          <label class="form-label">Instructions:</label>
+          <div id="instructions-list">
+            <input type="text" class="form-control mb-2" name="instructions[]" placeholder="Enter a step" required>
+          </div>
+          <button type="button" class="btn btn-sm btn-outline-primary" onclick="addInstruction()"><i class="bi bi-plus"></i> Add Step</button>
         </div>
-        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addInstruction()"><i class="bi bi-plus"></i> Add Step</button>
-      </div>
 
       <button type="submit" class="btn btn-custom">Save Recipe</button>
     </form>
@@ -239,6 +253,59 @@ function addInstruction() {
   instructionsList.appendChild(input);
 }
 </script>
+
+<script>
+const dropArea = document.getElementById('drop-area');
+const input = document.getElementById('image-input');
+
+['dragenter', 'dragover'].forEach(eventName => {
+  dropArea.addEventListener(eventName, (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dropArea.classList.add('dragover');
+  });
+});
+
+['dragleave', 'drop'].forEach(eventName => {
+  dropArea.addEventListener(eventName, (e) => {
+    e.preventDefault();
+    e.stopPropagation();
+    dropArea.classList.remove('dragover');
+  });
+});
+
+dropArea.addEventListener('drop', (e) => {
+  const files = e.dataTransfer.files;
+  if (files.length > 0) {
+    input.files = files; // set input value
+    previewImage({ target: input });
+  }
+});
+
+function previewImage(event) {
+  const file = event.target.files[0];
+  if (!file) return;
+
+  const reader = new FileReader();
+  reader.onload = function () {
+    const preview = document.getElementById('image-preview');
+    preview.src = reader.result;
+    preview.style.display = 'block';
+    document.querySelector('.image-wrapper').style.display = 'block';
+    document.getElementById('drop-message').style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+}
+
+function removePreview() {
+  input.value = "";
+  document.getElementById('image-preview').src = "#";
+  document.getElementById('image-preview').style.display = "none";
+  document.querySelector('.image-wrapper').style.display = 'none';
+  document.getElementById('drop-message').style.display = 'flex';
+}
+</script>
+
 
 <script>
   const uploadForm = document.getElementById('uploadForm');
