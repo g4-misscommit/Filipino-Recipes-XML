@@ -1,6 +1,13 @@
 <?php
+session_start();
+if (!isset($_SESSION['admin_logged_in'])) {
+  header("Location: admin_login.php");
+  exit;
+}
+
 include('db.php');
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -59,6 +66,11 @@ include('db.php');
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
     <a class="navbar-brand" href="index.html">SimplyTaste Admin</a>
+    <div class="d-flex">
+      <a href="logout.php" class="btn btn-outline-light ms-2">
+        <i class="bi bi-box-arrow-right"></i> Logout
+      </a>
+    </div>
   </div>
 </nav>
 
