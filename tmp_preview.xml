@@ -1,211 +1,132 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<recipes>
-  <recipe id="1">
-  <title>Tapsilog</title>
-  <category>Breakfast</category>
-  <prepTime>30 mins</prepTime>
-  <ingredients>
-    <item>500g beef tapa, sliced thinly</item>
-    <item>4 cups cooked garlic fried rice (sinangag)</item>
-    <item>4 fried eggs (sunny side up)</item>
-    <item>2 tbsp cooking oil</item>
-    <item>Vinegar dipping sauce (optional)</item>
-  </ingredients>
-  <instructions>
-    <step>Heat oil in a pan and cook the beef tapa until browned and tender.</step>
-    <step>Prepare garlic fried rice and fry eggs to your preference.</step>
-    <step>Assemble a plate with tapa, sinangag, and egg (silog).</step>
-    <step>Serve with vinegar sauce on the side if desired.</step>
-  </instructions>
-  <image>resources/tapsilog.png</image>
-</recipe>
+<?xml-stylesheet type="text/xsl" href="stylesheet.xsl"?>
 
-<recipe id="2">
-  <title>Longsilog</title>
-  <category>Breakfast</category>
-  <prepTime>25 mins</prepTime>
-  <ingredients>
-    <item>6 pieces longganisa (Filipino sweet sausage)</item>
-    <item>4 cups cooked garlic fried rice</item>
-    <item>4 fried eggs</item>
-    <item>Water for boiling</item>
-  </ingredients>
-  <instructions>
-    <step>Boil longganisa in a small amount of water until water evaporates.</step>
-    <step>Let longganisa fry in its own oil until cooked and caramelized.</step>
-    <step>Prepare garlic fried rice and fry eggs.</step>
-    <step>Serve longganisa with sinangag and egg.</step>
-  </instructions>
-  <image>resources/longsilog.png</image>
-</recipe>
+<hotel_data>
+    <hotels>
+        <HotelInfo>
+            <HotelName>Hotel del Coronado</HotelName>
+            <location>1500 Orange Ave, Coronado, CA 92118, United States</location>
+            <contactNumber>+1 619-435-6611</contactNumber>
+        </HotelInfo>
+        
+        <roomTypes>
+            <RoomType>
+                <type>Standard</type>
+                <roomRate currency="USD">300</roomRate>
+            </RoomType>
+            <RoomType>
+                <type>Deluxe</type>
+                <roomRate currency="USD">800</roomRate>
+            </RoomType>
+            <RoomType>
+                <type>Suite</type>
+                <roomRate currency="USD">1200</roomRate>
+            </RoomType>
+        </roomTypes>
+        
+        <services>
+            <service>
+                <service_name>Pool Access</service_name>
+                <description>Enjoy the hotel's swimming pool.</description>
+                <price currency="USD">10</price>
+            </service>
+            <service>
+                <service_name>Fitness Center Access</service_name>
+                <description>Access to the hotel's fitness center.</description>
+                <price currency="USD">15</price>
+            </service>
+            <service>
+                <service_name>Room Service</service_name>
+                <description>Food and Beverage service.</description>
+                <price currency="USD">20</price>
+            </service>
+            <service>
+                <service_name>Airport Shuttle</service_name>
+                <description>Convenient transport to and from the airport.</description>
+                <price currency="USD">50</price>
+            </service>
+            <service>
+                <service_name>Guided Tours</service_name>
+                <description>Explore local attractions with a guided tour.</description>
+                <price currency="USD">75</price>
+            </service>
+            <service>
+                <service_name>Spa and Massage</service_name>
+                <description>Relaxing Spa treatments and massages.</description>
+                <price currency="USD">100</price>
+            </service>
+        </services>
+    </hotels>
+    
+    <Reservations>
+        <Reservation>
+            <CustomerDetails>
+                <CustomerID>CU12345</CustomerID>
+                <name>Jeffrix Briol</name>
+                <SpecialRequests>Late check-in and extra towels</SpecialRequests>
+                <address>143 Zion Rd, Brgy. Casile, Cabuyao, Laguna</address>
+                <CheckInTime>2025-03-09 15:00:00</CheckInTime>
+                <CheckOutTime>2025-03-10 11:00:00</CheckOutTime>
+            </CustomerDetails>
+            <PaymentRecords>
+                <TransactionID>TRX123456</TransactionID>
+                <amount currency="USD">220</amount>
+                <paymentMethod>Credit Card</paymentMethod>
+                <date>2025-03-10</date>
+            </PaymentRecords>
+        </Reservation>
+        <Reservation>
+            <CustomerDetails>
+                <CustomerID>CU12346</CustomerID>
+                <name>Steven D. Tabusao</name>
+                <SpecialRequests>High floor and ocean view</SpecialRequests>
+                <address>456 Elm St, San Diego, CA 92101, United States</address>
+                <CheckInTime>2025-03-15 14:00:00</CheckInTime>
+                <CheckOutTime>2025-03-18 12:00:00</CheckOutTime>
+            </CustomerDetails>
+            <PaymentRecords>
+                <TransactionID>TRX123457</TransactionID>
+                <amount currency="USD">360</amount>
+                <paymentMethod>Debit Card</paymentMethod>
+                <date>2025-03-18</date>
+            </PaymentRecords>
+        </Reservation>
 
-<recipe id="3">
-  <title>Bangsilog</title>
-  <category>Breakfast</category>
-  <prepTime>20 mins</prepTime>
-  <ingredients>
-    <item>4 pieces boneless bangus (milkfish), marinated</item>
-    <item>4 cups garlic fried rice</item>
-    <item>4 fried eggs</item>
-    <item>Cooking oil for frying</item>
-  </ingredients>
-  <instructions>
-    <step>Fry the marinated bangus in hot oil until crispy and golden.</step>
-    <step>Prepare garlic fried rice and fry eggs.</step>
-    <step>Serve bangus with sinangag and egg.</step>
-  </instructions>
-  <image>resources/bangsilog.png</image>
-</recipe>
+        <!-- No Payment Method Sample  -->
+        <Reservation>
+            <CustomerDetails>
+                <CustomerID>CU12347</CustomerID>
+                <name>Michael Angelo Blando</name>
+                <SpecialRequests>No special requests</SpecialRequests>
+                <address>789 Maple Ave, Los Angeles, CA 90001, United States</address>
+                <CheckInTime>2025-03-20 16:00:00</CheckInTime>
+                <CheckOutTime>2025-03-22 10:00:00</CheckOutTime>
+            </CustomerDetails>
+            <PaymentRecords>
+                <TransactionID>TRX123458</TransactionID>
+                <!-- No Amount sample  -->
+                <date>2025-03-22</date>
+            </PaymentRecords>
+        </Reservation>
 
-<recipe id="4">
-  <title>Champorado</title>
-  <category>Breakfast</category>
-  <prepTime>30 mins</prepTime>
-  <ingredients>
-    <item>1 cup glutinous rice</item>
-    <item>4 cups water</item>
-    <item>1/2 cup cocoa powder</item>
-    <item>3/4 cup sugar</item>
-    <item>Condensed milk for topping</item>
-  </ingredients>
-  <instructions>
-    <step>Boil glutinous rice in water until soft and porridge-like.</step>
-    <step>Stir in cocoa powder and sugar until well mixed.</step>
-    <step>Cook for another 5–10 minutes until thickened.</step>
-    <step>Serve hot with a drizzle of condensed milk.</step>
-  </instructions>
-  <image>resources/champorado.png</image>
-</recipe>
 
-<recipe id="5">
-  <title>Pandesal</title>
-  <category>Breakfast</category>
-  <prepTime>2 hours</prepTime>
-  <ingredients>
-    <item>3 1/4 cups all-purpose flour</item>
-    <item>1/2 cup sugar</item>
-    <item>1 tsp salt</item>
-    <item>1 packet instant yeast</item>
-    <item>1 cup warm milk</item>
-    <item>1/4 cup butter, melted</item>
-    <item>Breadcrumbs for coating</item>
-  </ingredients>
-  <instructions>
-    <step>Mix flour, sugar, salt, and yeast in a bowl.</step>
-    <step>Gradually add milk and melted butter; knead until smooth.</step>
-    <step>Let dough rise for 1 hour or until doubled in size.</step>
-    <step>Shape into small balls and roll in breadcrumbs.</step>
-    <step>Let rise again for 30 minutes.</step>
-    <step>Bake at 180°C (350°F) for 15–20 minutes until golden brown.</step>
-    <step>Serve warm.</step>
-  </instructions>
-  <image>resources/pandesal.png</image>
-</recipe>
+        <!-- No Name Sample  -->
+        <Reservation>
+            <CustomerDetails>
+                <CustomerID>CU12348</CustomerID>
 
-<recipe id="6">
-  <title>Arroz Caldo</title>
-  <category>Breakfast</category>
-  <prepTime>45 mins</prepTime>
-  <ingredients>
-    <item>1 cup glutinous rice</item>
-    <item>1/2 kg chicken, cut into pieces</item>
-    <item>1 thumb-sized ginger, sliced</item>
-    <item>1 onion, chopped</item>
-    <item>6 cups chicken broth</item>
-    <item>Fish sauce, to taste</item>
-    <item>Salt and pepper to taste</item>
-    <item>Toasted garlic and spring onions for garnish</item>
-    <item>Calamansi or lemon wedges</item>
-  </ingredients>
-  <instructions>
-    <step>Sauté garlic, onion, and ginger until aromatic.</step>
-    <step>Add chicken pieces and cook until no longer pink.</step>
-    <step>Add rice and stir to coat with oil.</step>
-    <step>Pour in chicken broth and simmer until rice is soft and porridge-like.</step>
-    <step>Season with fish sauce, salt, and pepper.</step>
-    <step>Serve hot with toasted garlic, spring onions, and calamansi.</step>
-  </instructions>
-  <image>resources/arroz_caldo.png</image>
-</recipe>
+                <SpecialRequests>Allergy-friendly room</SpecialRequests>
+                <address>321 Oak St, San Francisco, CA 94102, United States</address>
+                <CheckInTime>2025-03-25 15:00:00</CheckInTime>
+                <CheckOutTime>2025-03-28 11:00:00</CheckOutTime>
+            </CustomerDetails>
+            <PaymentRecords>
+                <TransactionID>TRX123459</TransactionID>
+                <amount currency="USD">240</amount>
+                <paymentMethod>Credit Card</paymentMethod>
+                <date>2025-03-28</date>
+            </PaymentRecords>
+        </Reservation>
 
-<recipe id="7">
-  <title>Spam Silog</title>
-  <category>Breakfast</category>
-  <prepTime>20 mins</prepTime>
-  <ingredients>
-    <item>1 can Spam, sliced</item>
-    <item>4 cups cooked garlic fried rice</item>
-    <item>4 fried eggs</item>
-    <item>Cooking oil for frying</item>
-  </ingredients>
-  <instructions>
-    <step>Fry Spam slices in a pan until crispy.</step>
-    <step>Prepare garlic fried rice and fry eggs.</step>
-    <step>Assemble Spam, sinangag, and egg on a plate.</step>
-    <step>Serve hot.</step>
-  </instructions>
-  <image>resources/spam_silog.png</image>
-</recipe>
-
-<recipe id="8">
-  <title>Daing na Bangus</title>
-  <category>Breakfast</category>
-  <prepTime>30 mins</prepTime>
-  <ingredients>
-    <item>4 pieces daing na bangus (marinated milkfish)</item>
-    <item>Cooking oil for frying</item>
-    <item>Vinegar and garlic dipping sauce</item>
-  </ingredients>
-  <instructions>
-    <step>Heat oil in a pan and fry the milkfish until crispy and golden brown.</step>
-    <step>Drain on paper towels to remove excess oil.</step>
-    <step>Serve with vinegar dipping sauce and garlic rice.</step>
-  </instructions>
-  <image>resources/daing_na_bangus.png</image>
-</recipe>
-
-<recipe id="9">
-  <title>Beef Pares</title>
-  <category>Breakfast</category>
-  <prepTime>1 hour</prepTime>
-  <ingredients>
-    <item>500g beef brisket, cubed</item>
-    <item>4 cloves garlic, minced</item>
-    <item>1 onion, chopped</item>
-    <item>1/4 cup soy sauce</item>
-    <item>2 tbsp sugar</item>
-    <item>1 tsp black pepper</item>
-    <item>3 cups beef broth</item>
-    <item>Cooking oil</item>
-  </ingredients>
-  <instructions>
-    <step>Sauté garlic and onion until fragrant.</step>
-    <step>Add beef and cook until browned.</step>
-    <step>Pour soy sauce, sugar, and black pepper; mix well.</step>
-    <step>Pour beef broth and simmer until beef is tender.</step>
-    <step>Serve with garlic fried rice and a small bowl of beef soup.</step>
-  </instructions>
-  <image>resources/beef_pares.png</image>
-</recipe>
-
-<recipe id="10">
-  <title>Corned Beef Silog</title>
-  <category>Breakfast</category>
-  <prepTime>20 mins</prepTime>
-  <ingredients>
-    <item>1 can corned beef</item>
-    <item>1 onion, sliced</item>
-    <item>2 cloves garlic, minced</item>
-    <item>4 cups cooked garlic fried rice</item>
-    <item>4 fried eggs</item>
-    <item>Cooking oil for frying</item>
-  </ingredients>
-  <instructions>
-    <step>Sauté garlic and onion until fragrant.</step>
-    <step>Add corned beef and cook for 5 minutes.</step>
-    <step>Prepare garlic fried rice and fry eggs.</step>
-    <step>Serve corned beef with sinangag and egg.</step>
-  </instructions>
-  <image>resources/cornedsilog.png</image>
-</recipe>
-</recipes>
+    </Reservations>
+</hotel_data>
