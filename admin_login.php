@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Sign in your account</title>
+  <title>Login to your account</title>
   <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
   <style>
     * {
@@ -128,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 <body>
   <div class="main-container">
     <div class="login-container">
-      <h2>Login in your account</h2>
+      <h2>Login to your account</h2>
 
       <?php if ($error): ?>
         <p class="error"><?php echo $error; ?></p>

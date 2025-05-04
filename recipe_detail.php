@@ -29,6 +29,8 @@ $instructions = explode(';', $selectedRecipe['instructions']);
   <title><?php echo htmlspecialchars($selectedRecipe['title']); ?> - SimplyTaste</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <link href="styles.css" rel="stylesheet">
+
 
   <style>
     :root {
@@ -195,29 +197,35 @@ $instructions = explode(';', $selectedRecipe['instructions']);
     <?php endforeach; ?>
   </ol>
 
-  <div class="section-title mt-5">You'll Also Love</div>
-  <div class="row g-4 related-recipes justify-content-center">
-    <?php
-    $category = $selectedRecipe['category'];
-    $stmt = $conn->prepare("SELECT id, title, image FROM recipes WHERE category = ? AND id != ? ORDER BY RAND() LIMIT 4");
-    $stmt->bind_param("si", $category, $recipeId);
-    $stmt->execute();
-    $related = $stmt->get_result();
+    <!-- Print Button -->
+    <button onclick="window.print()" class="btn btn-outline-primary mt-4 no-print">
+    <i class="bi bi-printer"></i> Print Recipe
+    </button>
 
-    while ($r = $related->fetch_assoc()):
-    ?>
-      <div class="col-6 col-md-3">
-        <div class="card text-center">
-          <a href="recipe_detail.php?id=<?php echo $r['id']; ?>">
-            <img src="<?php echo htmlspecialchars($r['image']); ?>" alt="<?php echo htmlspecialchars($r['title']); ?>" class="img-fluid" style="height: 130px; object-fit: cover;">
-            <div class="fw-bold text-dark"><?php echo htmlspecialchars($r['title']); ?></div>
-          </a>
-        </div>
+    <div class="related-section">
+      <div class="section-title mt-5">You'll Also Love</div>
+      <div class="row g-4 related-recipes justify-content-center">
+        <?php
+        $category = $selectedRecipe['category'];
+        $stmt = $conn->prepare("SELECT id, title, image FROM recipes WHERE category = ? AND id != ? ORDER BY RAND() LIMIT 4");
+        $stmt->bind_param("si", $category, $recipeId);
+        $stmt->execute();
+        $related = $stmt->get_result();
+
+        while ($r = $related->fetch_assoc()):
+        ?>
+          <div class="col-6 col-md-3">
+            <div class="card text-center">
+              <a href="recipe_detail.php?id=<?php echo $r['id']; ?>">
+                <img src="<?php echo htmlspecialchars($r['image']); ?>" alt="<?php echo htmlspecialchars($r['title']); ?>" class="img-fluid" style="height: 130px; object-fit: cover;">
+                <div class="fw-bold text-dark"><?php echo htmlspecialchars($r['title']); ?></div>
+              </a>
+            </div>
+          </div>
+        <?php endwhile; ?>
       </div>
-    <?php endwhile; ?>
+    </div>
   </div>
-</div>
-
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
