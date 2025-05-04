@@ -7,9 +7,7 @@ if (!isset($_SESSION['admin_logged_in'])) {
 
 include('db.php');
 $errorMessage = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : null;
-
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -23,19 +21,58 @@ $errorMessage = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : null;
 
   <style>
     body {
-      background-color: #fffaf5;
+      background-color: white;
       font-family: 'Segoe UI', sans-serif;
-      padding-top: 70px; /* for navbar spacing */
+      padding-top: 70px;
     }
 
     .navbar {
-      background-color: #a0522d;
+      background-color: white !important;
+      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
     }
 
-    .navbar-brand, .nav-link {
-      color: white !important;
+    .navbar-brand {
       font-weight: bold;
+      font-size: 1.5rem;
     }
+
+    .navbar-brand span.simply {
+      color: black;
+    }
+
+    .navbar-brand span.taste {
+      color: #ffbd59;
+    }
+
+    .navbar-brand span.admin {
+      color: black;
+      font-weight: bold;
+      font-size: 2rem;
+      margin-left: 8px;
+    }
+
+    .btn-logout {
+      background-color: black;
+      color: white;
+      border: none;
+    }
+
+    .btn-logout:hover {
+      background-color: #ffbd59;
+      color: white;
+    }
+
+    .btn-preview {
+      background-color: black;
+      color: white;
+      border: none;
+    }
+
+    .btn-preview:hover {
+      background-color: #ffbd59;
+      color: white;
+    }
+
 
     .section-title {
       font-weight: bold;
@@ -43,8 +80,10 @@ $errorMessage = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : null;
       margin-bottom: 20px;
     }
 
-    .form-section, .export-section, .import-section {
-      background: #ffffff;
+    .form-section,
+    .export-section,
+    .import-section {
+      background: #f5f5f5;
       padding: 20px;
       margin-bottom: 30px;
       border-radius: 8px;
@@ -67,9 +106,12 @@ $errorMessage = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : null;
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container">
-    <a class="navbar-brand" href="index.html">SimplyTaste Admin</a>
+    <a class="navbar-brand" href="index.html">
+      <span class="simply">Simply</span><span class="taste">Taste</span>
+      <span class="admin">Admin</span>
+    </a>
     <div class="d-flex">
-      <a href="logout.php" class="btn btn-outline-light ms-2">
+      <a href="logout.php" class="btn btn-logout ms-2">
         <i class="bi bi-box-arrow-right"></i> Logout
       </a>
     </div>
@@ -82,36 +124,33 @@ $errorMessage = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : null;
   <div class="form-section">
     <h2 class="section-title">Add a New Recipe</h2>
     <form action="add_recipe.php" method="POST" enctype="multipart/form-data">
-    <div class="row">
+      <div class="row">
         <div class="col-md-6 mb-3">
           <label class="form-label">Title:</label>
           <input type="text" class="form-control" name="title" required>
         </div>
-          <div class="col-md-6 mb-3">
-            <label class="form-label">Category:</label>
-            <select class="form-select" name="category" required>
-              <option value="">Select Category</option>
-              <option value="Breakfast">Breakfast</option>
-              <option value="Lunch">Lunch</option>
-              <option value="Dinner">Dinner</option>
-              <option value="Merienda">Merienda</option>
-            </select>
-          </div>
+        <div class="col-md-6 mb-3">
+          <label class="form-label">Category:</label>
+          <select class="form-select" name="category" required>
+            <option value="">Select Category</option>
+            <option value="Breakfast">Breakfast</option>
+            <option value="Lunch">Lunch</option>
+            <option value="Dinner">Dinner</option>
+            <option value="Merienda">Merienda</option>
+          </select>
+        </div>
         <div class="col-md-6 mb-3">
           <label class="form-label">Preparation Time:</label>
           <input type="text" class="form-control" name="prepTime" required>
         </div>
-
         <div class="col-md-6 mb-3">
           <label class="form-label">Upload Recipe Image:</label>
           <div id="drop-area" class="border-dashed text-center" onclick="document.getElementById('image-input').click();">
             <input type="file" id="image-input" name="image" accept="image/*" onchange="previewImage(event)" hidden required>
-
             <div id="drop-message">
               <i class="bi bi-upload" style="font-size: 2rem; color: #999;"></i>
               <p class="text-muted">Click or drag image here</p>
             </div>
-
             <div class="image-wrapper mt-2 position-relative" style="display:none;">
               <img id="image-preview" class="img-fluid rounded" alt="Preview" />
               <button type="button" class="btn-close position-absolute top-0 end-0 m-1" aria-label="Close" onclick="removePreview()"></button>
@@ -120,66 +159,65 @@ $errorMessage = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : null;
         </div>
       </div>
 
-        <!-- Dynamic Ingredients -->
-        <div class="mb-3">
-          <label class="form-label">Ingredients:</label>
-          <div id="ingredients-list">
-            <input type="text" class="form-control mb-2" name="ingredients[]" placeholder="Enter an ingredient" required>
-          </div>
-          <button type="button" class="btn btn-sm btn-outline-primary" onclick="addIngredient()"><i class="bi bi-plus"></i> Add Ingredient</button>
+      <!-- Dynamic Ingredients -->
+      <div class="mb-3">
+        <label class="form-label">Ingredients:</label>
+        <div id="ingredients-list">
+          <input type="text" class="form-control mb-2" name="ingredients[]" placeholder="Enter an ingredient" required>
         </div>
+        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addIngredient()"><i class="bi bi-plus"></i> Add Ingredient</button>
+      </div>
 
-        <!-- Dynamic Instructions -->
-        <div class="mb-3">
-          <label class="form-label">Instructions:</label>
-          <div id="instructions-list">
-            <input type="text" class="form-control mb-2" name="instructions[]" placeholder="Enter a step" required>
-          </div>
-          <button type="button" class="btn btn-sm btn-outline-primary" onclick="addInstruction()"><i class="bi bi-plus"></i> Add Step</button>
+      <!-- Dynamic Instructions -->
+      <div class="mb-3">
+        <label class="form-label">Instructions:</label>
+        <div id="instructions-list">
+          <input type="text" class="form-control mb-2" name="instructions[]" placeholder="Enter a step" required>
         </div>
+        <button type="button" class="btn btn-sm btn-outline-primary" onclick="addInstruction()"><i class="bi bi-plus"></i> Add Step</button>
+      </div>
 
       <button type="submit" class="btn btn-custom">Save Recipe</button>
     </form>
   </div>
 
-<!-- Manage Recipes Section -->
-<div class="form-section">
-  <h2 class="section-title">Manage Existing Recipes</h2>
-  <form method="POST" action="delete_recipe.php" onsubmit="return confirm('Are you sure you want to delete the selected recipe(s)?');">
-    <div class="mb-3">
-      <button type="submit" class="btn btn-danger btn-sm">Delete Selected</button>
-      <button type="submit" name="delete_all" value="1" class="btn btn-warning btn-sm" onclick="return confirm('Delete ALL recipes? This cannot be undone.')">Delete All</button>
-    </div>
-
-    <div class="table-responsive">
-      <table class="table table-striped table-bordered">
-        <thead class="table-dark">
-          <tr>
-            <th><input type="checkbox" id="selectAll"></th>
-            <th>ID</th>
-            <th>Title</th>
-            <th>Category</th>
-            <th>Prep Time</th>
-          </tr>
-        </thead>
-        <tbody>
-          <?php
-            $result = $conn->query("SELECT * FROM recipes ORDER BY id DESC");
-            while ($row = $result->fetch_assoc()):
-          ?>
+  <!-- Manage Recipes Section -->
+  <div class="form-section">
+    <h2 class="section-title">Manage Existing Recipes</h2>
+    <form method="POST" action="delete_recipe.php" onsubmit="return confirm('Are you sure you want to delete the selected recipe(s)?');">
+      <div class="mb-3">
+        <button type="submit" class="btn btn-danger btn-sm">Delete Selected</button>
+        <button type="submit" name="delete_all" value="1" class="btn btn-warning btn-sm" onclick="return confirm('Delete ALL recipes? This cannot be undone.')">Delete All</button>
+      </div>
+      <div class="table-responsive">
+        <table class="table table-striped table-bordered">
+          <thead class="table-dark">
             <tr>
-              <td><input type="checkbox" name="recipe_ids[]" value="<?php echo $row['id']; ?>"></td>
-              <td><?php echo $row['id']; ?></td>
-              <td><?php echo htmlspecialchars($row['title']); ?></td>
-              <td><?php echo htmlspecialchars($row['category']); ?></td>
-              <td><?php echo htmlspecialchars($row['prep_time']); ?></td>
+              <th><input type="checkbox" id="selectAll"></th>
+              <th>ID</th>
+              <th>Title</th>
+              <th>Category</th>
+              <th>Prep Time</th>
             </tr>
-          <?php endwhile; ?>
-        </tbody>
-      </table>
-    </div>
-  </form>
-</div>
+          </thead>
+          <tbody>
+            <?php
+              $result = $conn->query("SELECT * FROM recipes ORDER BY id DESC");
+              while ($row = $result->fetch_assoc()):
+            ?>
+              <tr>
+                <td><input type="checkbox" name="recipe_ids[]" value="<?php echo $row['id']; ?>"></td>
+                <td><?php echo $row['id']; ?></td>
+                <td><?php echo htmlspecialchars($row['title']); ?></td>
+                <td><?php echo htmlspecialchars($row['category']); ?></td>
+                <td><?php echo htmlspecialchars($row['prep_time']); ?></td>
+              </tr>
+            <?php endwhile; ?>
+          </tbody>
+        </table>
+      </div>
+    </form>
+  </div>
 
 <!-- Error Modal -->
 <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
@@ -220,8 +258,8 @@ $errorMessage = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : null;
   <form id="uploadForm" enctype="multipart/form-data">
     <label for="xml_file" class="form-label">Upload Recipe XML</label>
     <input type="file" name="xml_file" id="xml_file" class="form-control" accept=".xml" required>
-    <button type="submit" class="btn btn-primary mt-2">Preview XML</button>
-  </form>
+    <button type="submit" class="btn btn-preview mt-2">Preview XML</button>
+    </form>
 </div>
 
 <!-- Preview Modal -->

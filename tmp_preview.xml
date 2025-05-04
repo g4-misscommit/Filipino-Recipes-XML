@@ -1,132 +1,265 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet type="text/xsl" href="stylesheet.xsl"?>
+<recipes>
+<recipe id="21">
+  <title>Chicken Afritada</title>
+  <category>Dinner</category>
+  <prepTime>1 hour</prepTime>
+  <ingredients>
+    <item>1 kg chicken, cut into serving pieces</item>
+    <item>1 cup potatoes, diced</item>
+    <item>1 cup carrots, diced</item>
+    <item>1/2 cup green peas</item>
+    <item>1 red bell pepper, sliced</item>
+    <item>1 onion, chopped</item>
+    <item>5 cloves garlic, minced</item>
+    <item>2 cups tomato sauce</item>
+    <item>1 cup water</item>
+    <item>3 tbsp cooking oil</item>
+    <item>Salt and pepper to taste</item>
+  </ingredients>
+  <instructions>
+    <step>Heat oil and sauté garlic and onion until translucent.</step>
+    <step>Add chicken and cook until lightly browned.</step>
+    <step>Pour in tomato sauce and water. Simmer until chicken is tender.</step>
+    <step>Add potatoes and carrots. Cook until vegetables are tender.</step>
+    <step>Mix in green peas and bell pepper. Simmer for another 5 minutes.</step>
+    <step>Season with salt and pepper.</step>
+    <step>Serve hot with steamed rice.</step>
+  </instructions>
+  <image>resources/afritada.png</image>
+</recipe>
 
-<hotel_data>
-    <hotels>
-        <HotelInfo>
-            <HotelName>Hotel del Coronado</HotelName>
-            <location>1500 Orange Ave, Coronado, CA 92118, United States</location>
-            <contactNumber>+1 619-435-6611</contactNumber>
-        </HotelInfo>
-        
-        <roomTypes>
-            <RoomType>
-                <type>Standard</type>
-                <roomRate currency="USD">300</roomRate>
-            </RoomType>
-            <RoomType>
-                <type>Deluxe</type>
-                <roomRate currency="USD">800</roomRate>
-            </RoomType>
-            <RoomType>
-                <type>Suite</type>
-                <roomRate currency="USD">1200</roomRate>
-            </RoomType>
-        </roomTypes>
-        
-        <services>
-            <service>
-                <service_name>Pool Access</service_name>
-                <description>Enjoy the hotel's swimming pool.</description>
-                <price currency="USD">10</price>
-            </service>
-            <service>
-                <service_name>Fitness Center Access</service_name>
-                <description>Access to the hotel's fitness center.</description>
-                <price currency="USD">15</price>
-            </service>
-            <service>
-                <service_name>Room Service</service_name>
-                <description>Food and Beverage service.</description>
-                <price currency="USD">20</price>
-            </service>
-            <service>
-                <service_name>Airport Shuttle</service_name>
-                <description>Convenient transport to and from the airport.</description>
-                <price currency="USD">50</price>
-            </service>
-            <service>
-                <service_name>Guided Tours</service_name>
-                <description>Explore local attractions with a guided tour.</description>
-                <price currency="USD">75</price>
-            </service>
-            <service>
-                <service_name>Spa and Massage</service_name>
-                <description>Relaxing Spa treatments and massages.</description>
-                <price currency="USD">100</price>
-            </service>
-        </services>
-    </hotels>
-    
-    <Reservations>
-        <Reservation>
-            <CustomerDetails>
-                <CustomerID>CU12345</CustomerID>
-                <name>Jeffrix Briol</name>
-                <SpecialRequests>Late check-in and extra towels</SpecialRequests>
-                <address>143 Zion Rd, Brgy. Casile, Cabuyao, Laguna</address>
-                <CheckInTime>2025-03-09 15:00:00</CheckInTime>
-                <CheckOutTime>2025-03-10 11:00:00</CheckOutTime>
-            </CustomerDetails>
-            <PaymentRecords>
-                <TransactionID>TRX123456</TransactionID>
-                <amount currency="USD">220</amount>
-                <paymentMethod>Credit Card</paymentMethod>
-                <date>2025-03-10</date>
-            </PaymentRecords>
-        </Reservation>
-        <Reservation>
-            <CustomerDetails>
-                <CustomerID>CU12346</CustomerID>
-                <name>Steven D. Tabusao</name>
-                <SpecialRequests>High floor and ocean view</SpecialRequests>
-                <address>456 Elm St, San Diego, CA 92101, United States</address>
-                <CheckInTime>2025-03-15 14:00:00</CheckInTime>
-                <CheckOutTime>2025-03-18 12:00:00</CheckOutTime>
-            </CustomerDetails>
-            <PaymentRecords>
-                <TransactionID>TRX123457</TransactionID>
-                <amount currency="USD">360</amount>
-                <paymentMethod>Debit Card</paymentMethod>
-                <date>2025-03-18</date>
-            </PaymentRecords>
-        </Reservation>
+<recipe id="22">
+  <title>Sinigang na Baboy</title>
+  <category>Dinner</category>
+  <prepTime>1 hour</prepTime>
+  <ingredients>
+    <item>1 kg pork belly, cut into chunks</item>
+    <item>1 pack sinigang mix (or fresh tamarind)</item>
+    <item>1 onion, quartered</item>
+    <item>2 tomatoes, quartered</item>
+    <item>1 bunch kangkong (water spinach)</item>
+    <item>1 cup sitaw (string beans)</item>
+    <item>1 radish, sliced</item>
+    <item>1 eggplant, sliced</item>
+    <item>6 cups water</item>
+    <item>Fish sauce to taste</item>
+  </ingredients>
+  <instructions>
+    <step>Boil pork in water with onions and tomatoes until pork is tender.</step>
+    <step>Add radish, sitaw, and eggplant. Cook until vegetables are half-cooked.</step>
+    <step>Pour in sinigang mix and stir well.</step>
+    <step>Add kangkong last and cook for 1–2 minutes.</step>
+    <step>Season with fish sauce.</step>
+    <step>Serve hot with steamed rice.</step>
+  </instructions>
+  <image>resources/sinigang_na_baboy.png</image>
+</recipe>
 
-        <!-- No Payment Method Sample  -->
-        <Reservation>
-            <CustomerDetails>
-                <CustomerID>CU12347</CustomerID>
-                <name>Michael Angelo Blando</name>
-                <SpecialRequests>No special requests</SpecialRequests>
-                <address>789 Maple Ave, Los Angeles, CA 90001, United States</address>
-                <CheckInTime>2025-03-20 16:00:00</CheckInTime>
-                <CheckOutTime>2025-03-22 10:00:00</CheckOutTime>
-            </CustomerDetails>
-            <PaymentRecords>
-                <TransactionID>TRX123458</TransactionID>
-                <!-- No Amount sample  -->
-                <date>2025-03-22</date>
-            </PaymentRecords>
-        </Reservation>
+<recipe id="23">
+  <title>Pinakbet</title>
+  <category>Dinner</category>
+  <prepTime>45 mins</prepTime>
+  <ingredients>
+    <item>300g pork belly, sliced</item>
+    <item>1 cup squash, diced</item>
+    <item>1 cup string beans, cut into 2-inch pieces</item>
+    <item>1 cup eggplant, sliced</item>
+    <item>1 cup bitter melon (ampalaya), sliced</item>
+    <item>1 tomato, diced</item>
+    <item>1 onion, chopped</item>
+    <item>3 cloves garlic, minced</item>
+    <item>2 tbsp bagoong (shrimp paste)</item>
+    <item>1/2 cup water</item>
+    <item>Cooking oil</item>
+  </ingredients>
+  <instructions>
+    <step>Fry pork until browned and crispy. Set aside.</step>
+    <step>Sauté garlic, onion, and tomatoes until soft.</step>
+    <step>Add bagoong and mix well.</step>
+    <step>Add squash and water. Cook until slightly tender.</step>
+    <step>Add string beans, eggplant, and ampalaya. Simmer until cooked but still crisp.</step>
+    <step>Top with fried pork before serving.</step>
+  </instructions>
+  <image>resources/pinakbet.png</image>
+</recipe>
 
+<recipe id="24">
+  <title>Bistek Tagalog</title>
+  <category>Dinner</category>
+  <prepTime>40 mins</prepTime>
+  <ingredients>
+    <item>500g beef sirloin, thinly sliced</item>
+    <item>1/4 cup soy sauce</item>
+    <item>3 tbsp calamansi juice (or lemon juice)</item>
+    <item>1 large onion, sliced into rings</item>
+    <item>2 cloves garlic, minced</item>
+    <item>Cooking oil</item>
+    <item>Salt and pepper to taste</item>
+  </ingredients>
+  <instructions>
+    <step>Marinate beef in soy sauce, calamansi juice, and garlic for at least 30 minutes.</step>
+    <step>Heat oil and fry onion rings. Set aside.</step>
+    <step>In the same pan, fry beef slices until cooked.</step>
+    <step>Pour remaining marinade and simmer beef until tender.</step>
+    <step>Top with fried onions before serving.</step>
+  </instructions>
+  <image>resources/bistek_tagalog.png</image>
+</recipe>
 
-        <!-- No Name Sample  -->
-        <Reservation>
-            <CustomerDetails>
-                <CustomerID>CU12348</CustomerID>
+<recipe id="25">
+  <title>Ginataang Hipon</title>
+  <category>Dinner</category>
+  <prepTime>30 mins</prepTime>
+  <ingredients>
+    <item>500g shrimp, cleaned</item>
+    <item>1 cup coconut milk</item>
+    <item>1 cup coconut cream</item>
+    <item>1 thumb-sized ginger, sliced</item>
+    <item>3 cloves garlic, minced</item>
+    <item>1 onion, chopped</item>
+    <item>1 red chili (optional)</item>
+    <item>Salt and pepper to taste</item>
+  </ingredients>
+  <instructions>
+    <step>Sauté garlic, onion, and ginger until fragrant.</step>
+    <step>Add coconut milk and bring to a gentle simmer.</step>
+    <step>Add shrimp and cook until it turns pink.</step>
+    <step>Pour coconut cream and continue simmering until thickened.</step>
+    <step>Season with salt and pepper. Add chili if desired.</step>
+    <step>Serve hot with rice.</step>
+  </instructions>
+  <image>resources/ginataang_hipon.png</image>
+</recipe>
 
-                <SpecialRequests>Allergy-friendly room</SpecialRequests>
-                <address>321 Oak St, San Francisco, CA 94102, United States</address>
-                <CheckInTime>2025-03-25 15:00:00</CheckInTime>
-                <CheckOutTime>2025-03-28 11:00:00</CheckOutTime>
-            </CustomerDetails>
-            <PaymentRecords>
-                <TransactionID>TRX123459</TransactionID>
-                <amount currency="USD">240</amount>
-                <paymentMethod>Credit Card</paymentMethod>
-                <date>2025-03-28</date>
-            </PaymentRecords>
-        </Reservation>
+<recipe id="26">
+  <title>Paksiw na Bangus</title>
+  <category>Dinner</category>
+  <prepTime>35 mins</prepTime>
+  <ingredients>
+    <item>1 whole bangus (milkfish), cleaned and sliced</item>
+    <item>1/2 cup vinegar</item>
+    <item>1 cup water</item>
+    <item>1 thumb-sized ginger, sliced</item>
+    <item>3 cloves garlic, crushed</item>
+    <item>1 onion, sliced</item>
+    <item>2 pieces eggplant, sliced</item>
+    <item>Salt and pepper to taste</item>
+  </ingredients>
+  <instructions>
+    <step>Arrange bangus, eggplant, onion, ginger, and garlic in a pot.</step>
+    <step>Pour vinegar and water over the ingredients.</step>
+    <step>Season with salt and pepper.</step>
+    <step>Bring to a boil without stirring.</step>
+    <step>Simmer until fish is cooked and flavors are absorbed.</step>
+    <step>Serve hot with rice.</step>
+  </instructions>
+  <image>resources/paksiw_na_bangus.png</image>
+</recipe>
 
-    </Reservations>
-</hotel_data>
+<recipe id="27">
+  <title>Pochero</title>
+  <category>Dinner</category>
+  <prepTime>1 hour 30 mins</prepTime>
+  <ingredients>
+    <item>1 kg beef shank</item>
+    <item>2 saba bananas, sliced</item>
+    <item>1 sweet potato, diced</item>
+    <item>1 cup cabbage, chopped</item>
+    <item>1 cup pechay (bok choy)</item>
+    <item>1/2 cup green beans</item>
+    <item>1 can tomato sauce (250g)</item>
+    <item>6 cups water</item>
+    <item>Salt and pepper to taste</item>
+  </ingredients>
+  <instructions>
+    <step>Boil beef until tender. Set aside broth.</step>
+    <step>Sauté garlic and onion, add beef, then tomato sauce.</step>
+    <step>Add broth back in and simmer.</step>
+    <step>Add sweet potatoes, saba bananas, and green beans.</step>
+    <step>When vegetables are almost cooked, add cabbage and pechay.</step>
+    <step>Season with salt and pepper.</step>
+    <step>Serve hot.</step>
+  </instructions>
+  <image>resources/pochero.png</image>
+</recipe>
+
+<recipe id="28">
+  <title>Laing</title>
+  <category>Dinner</category>
+  <prepTime>45 mins</prepTime>
+  <ingredients>
+    <item>200g dried taro leaves</item>
+    <item>400ml coconut milk</item>
+    <item>1 cup coconut cream</item>
+    <item>1/2 cup dried fish or shrimp (optional)</item>
+    <item>1 thumb-sized ginger, sliced</item>
+    <item>3 cloves garlic, minced</item>
+    <item>1 onion, chopped</item>
+    <item>2 red chilies, sliced (optional)</item>
+    <item>Salt and pepper to taste</item>
+  </ingredients>
+  <instructions>
+    <step>In a pot, arrange taro leaves without stirring once coconut milk is added.</step>
+    <step>Pour coconut milk and add garlic, onion, ginger, and dried seafood.</step>
+    <step>Simmer on low heat without stirring until leaves absorb the coconut milk.</step>
+    <step>Add coconut cream and chilies, then cook until oil surfaces.</step>
+    <step>Season with salt and pepper.</step>
+    <step>Serve hot with rice.</step>
+  </instructions>
+  <image>resources/laing.png</image>
+</recipe>
+<recipe id="29">
+  <title>Kare-Kare</title>
+  <category>Dinner</category>
+  <prepTime>1 hour 30 mins</prepTime>
+  <ingredients>
+    <item>1 kg oxtail (or beef shank/tripe), cut into pieces</item>
+    <item>1/2 cup peanut butter</item>
+    <item>1/4 cup ground toasted rice (optional, for thickening)</item>
+    <item>1 bundle string beans, cut into 2-inch pieces</item>
+    <item>1 banana heart (puso ng saging), sliced</item>
+    <item>1 bunch pechay (bok choy)</item>
+    <item>1 eggplant, sliced</item>
+    <item>1 onion, chopped</item>
+    <item>5 cloves garlic, minced</item>
+    <item>6 cups water (or beef broth)</item>
+    <item>Cooking oil</item>
+    <item>Salt and pepper to taste</item>
+    <item>Bagoong (shrimp paste), for serving</item>
+  </ingredients>
+  <instructions>
+    <step>Boil oxtail until tender (about 1–1.5 hours). Set aside broth.</step>
+    <step>Heat oil in a large pan. Sauté garlic and onion until fragrant.</step>
+    <step>Add boiled meat and some broth. Simmer.</step>
+    <step>Stir in peanut butter until fully dissolved.</step>
+    <step>Add ground rice to thicken the sauce (optional).</step>
+    <step>Add vegetables (string beans, banana heart, eggplant) and cook until tender.</step>
+    <step>Add pechay last and cook for 1–2 minutes.</step>
+    <step>Season with salt and pepper.</step>
+    <step>Serve hot with bagoong on the side.</step>
+  </instructions>
+  <image>resources/kare_kare.png</image>
+</recipe>
+
+<recipe id="30">
+  <title>Inihaw na Liempo</title>
+  <category>Dinner</category>
+  <prepTime>1 hour</prepTime>
+  <ingredients>
+    <item>1 kg pork belly, sliced</item>
+    <item>1/2 cup soy sauce</item>
+    <item>1/4 cup calamansi juice</item>
+    <item>5 cloves garlic, minced</item>
+    <item>1 tsp ground pepper</item>
+    <item>Salt to taste</item>
+  </ingredients>
+  <instructions>
+    <step>Marinate pork belly in soy sauce, calamansi juice, garlic, pepper, and salt for at least 1 hour.</step>
+    <step>Grill over hot charcoal until fully cooked and slightly charred.</step>
+    <step>Serve with dipping sauce or rice.</step>
+  </instructions>
+  <image>resources/inihaw_na_liempo.png</image>
+</recipe>
+
+</recipes>
