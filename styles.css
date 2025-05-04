@@ -1,3 +1,4 @@
+/*Admin Dahsboard Upload Image CSS*/
 .border-dashed {
     border: 5px dashed #ccc;
     border-radius: 10px;
@@ -70,5 +71,36 @@
     position: relative;
   }
   
+  /*Print Recipe*/
+  @media print {
+    .no-print, .navbar, .btn, .card, .row, a {
+      display: none !important;
+    }
+  
+    body {
+      background-color: white;
+      color: black;
+    }
+  
+    .recipe-image {
+      max-width: 100%;
+      margin-bottom: 20px;
+    }
+  
+    .recipe-title {
+      font-size: 26px;
+      font-weight: bold;
+    }
+  
+    .recipe-description,
+    .section-title,
+    ul,
+    ol {
+      font-size: 16px;
+    }
+    .related-section {
+      display: none !important;
+    }
+  }
   
   
