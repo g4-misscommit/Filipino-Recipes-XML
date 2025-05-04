@@ -296,7 +296,7 @@
               </header>
               <p class="description">A sweet chocolate and vanilla sticky rice delicacy from Leyte, wrapped in banana leaves and steamed to perfection.</p>
               <footer class="content__footer">
-                <a href="index-recipe-detail.php">View Recipe</a>
+                <a href="#" onclick="showRecipe('suman')">View Recipe</a>
               </footer>
             </div>
           </div>
@@ -325,7 +325,7 @@
               </header>
               <p class="description">A savory vegetable dish from the north, cooked with shrimp paste and featuring squash, eggplant, okra, and bitter melon.</p>
               <footer class="content__footer">
-                <a href="index-recipe-detail.php">View Recipe</a>
+                <a href="#" onclick="showRecipe('pinakbet')">View Recipe</a>
               </footer>
             </div>
           </div>
@@ -354,7 +354,7 @@
               </header>
               <p class="description">A rich peanut-based stew made with oxtail, tripe, and vegetables like eggplant and string beans best served with bagoong.</p>
               <footer class="content__footer">
-                <a href="index-recipe-detail.php">View Recipe</a>
+                <a href="#" onclick="showRecipe('kare-kare')">View Recipe</a>
               </footer>
             </div>
           </div>
@@ -364,11 +364,36 @@
   </div>
 </section>
 
+
+<!-- Recipe Modal -->
+<div class="modal fade" id="recipeModal" tabindex="-1" aria-labelledby="recipeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" id="recipe-modal-content">
+      <!-- AJAX content will be loaded here -->
+    </div>
+  </div>
+</div>
+
+
+
 <!-- Scripts -->
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   AOS.init();
 </script>
+
+<script>
+  function showRecipe(recipeId) {
+    fetch('index-recipe-detail.php?recipe=' + recipeId)
+      .then(response => response.text())
+      .then(html => {
+        document.getElementById('recipe-modal-content').innerHTML = html;
+        const modal = new bootstrap.Modal(document.getElementById('recipeModal'));
+        modal.show();
+      });
+  }
+  </script>
+
 </body>
 </html>
