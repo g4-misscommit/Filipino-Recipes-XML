@@ -5,13 +5,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $fileTmpPath = 'tmp_preview.xml';
 
     if (!file_exists($fileTmpPath)) {
-        die("Error: Preview file not found.");
+        $error = urlencode("Preview file not found.");
+        header("Location: admin.php?error=$error");
+        exit;
     }
-
+    
     $importedXml = simplexml_load_file($fileTmpPath);
     if (!$importedXml || !isset($importedXml->recipe)) {
-        die("Error: Invalid XML structure.");
+        $error = urlencode("Invalid XML structure.");
+        header("Location: admin.php?error=$error");
+        exit;
     }
+    
 
     $addedCount = 0;
 

@@ -6,6 +6,8 @@ if (!isset($_SESSION['admin_logged_in'])) {
 }
 
 include('db.php');
+$errorMessage = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : null;
+
 ?>
 
 
@@ -178,6 +180,22 @@ include('db.php');
     </div>
   </form>
 </div>
+
+<!-- Error Modal -->
+<div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content border-danger">
+      <div class="modal-header bg-danger text-white">
+        <h5 class="modal-title" id="errorModalLabel">Error</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" id="errorModalBody">
+        <!-- Error message will be inserted here -->
+      </div>
+    </div>
+  </div>
+</div>
+
 
 <!-- JavaScript to handle select all -->
 <script>
@@ -355,8 +373,25 @@ function removePreview() {
   }
 </script>
 
-
+<!-- Error Handling script -->
+<script>
+  const errorMessage = <?php echo json_encode($errorMessage); ?>;
+  if (errorMessage) {
+    document.getElementById('errorModalBody').textContent = errorMessage;
+    const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+    errorModal.show();
+  }
+</script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<?php if ($errorMessage): ?>
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const errorModal = new bootstrap.Modal(document.getElementById('errorModal'));
+    document.getElementById('errorModalBody').textContent = <?php echo json_encode($errorMessage); ?>;
+    errorModal.show();
+  });
+</script>
+<?php endif; ?>
 </body>
 </html>
 
