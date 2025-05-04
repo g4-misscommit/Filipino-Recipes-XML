@@ -97,8 +97,8 @@ $instructions = explode(';', $selectedRecipe['instructions']);
     }
 
     .recipe-image {
-      width: 100%;
-      height: auto;
+      width: auto;
+      height: 100%;
       border-radius: 15px;
       object-fit: cover;
       margin-bottom: 20px;
@@ -169,12 +169,14 @@ $instructions = explode(';', $selectedRecipe['instructions']);
   </div>
 </nav>
 
-<!-- Recipe Detail -->
 <div class="container mt-4">
-  <a href="recipes.php" class="btn btn-outline-secondary back-btn">
+<a href="recipes.php" class="btn btn-outline-secondary back-btn">
     <i class="bi bi-arrow-left-circle"></i> Back to Recipes
   </a>
+</div>
 
+<!-- Recipe Detail -->
+<div class="container mt-4">
   <img src="<?php echo htmlspecialchars($selectedRecipe['image']); ?>" alt="<?php echo htmlspecialchars($selectedRecipe['title']); ?>" class="recipe-image">
 
   <h1 class="recipe-title"><?php echo htmlspecialchars($selectedRecipe['title']); ?> Recipe</h1>
