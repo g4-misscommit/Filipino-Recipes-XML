@@ -122,6 +122,9 @@ $instructions = explode(';', $selectedRecipe['instructions']);
       margin-bottom: 20px;
       font-weight: 600;
     }
+    .related-section {
+      margin-bottom: 50px;
+    }
 
     .related-recipes .card {
       border: 2px solid var(--accent-color);
@@ -177,13 +180,14 @@ $instructions = explode(';', $selectedRecipe['instructions']);
 
 <!-- Recipe Detail -->
 <div class="container mt-4">
-  <img src="<?php echo htmlspecialchars($selectedRecipe['image']); ?>" alt="<?php echo htmlspecialchars($selectedRecipe['title']); ?>" class="recipe-image">
 
   <h1 class="recipe-title"><?php echo htmlspecialchars($selectedRecipe['title']); ?> Recipe</h1>
   <p class="recipe-description">
     Category: <?php echo htmlspecialchars($selectedRecipe['category']); ?><br>
     Prep Time: <?php echo htmlspecialchars($selectedRecipe['prep_time']); ?>
   </p>
+
+  <img src="<?php echo htmlspecialchars($selectedRecipe['image']); ?>" alt="<?php echo htmlspecialchars($selectedRecipe['title']); ?>" class="recipe-image">
 
   <div class="section-title">Ingredients</div>
   <ul>
