@@ -1,8 +1,18 @@
 <?php
 include('db.php');
 
-// Fetch all recipes from the database
-$result = $conn->query("SELECT * FROM recipes ORDER BY id DESC");
+// Get search term if provided
+$searchTerm = $_GET['q'] ?? '';
+
+// Prepare query based on search
+if ($searchTerm) {
+  $stmt = $conn->prepare("SELECT * FROM recipes WHERE title LIKE CONCAT('%', ?, '%') ORDER BY id DESC");
+  $stmt->bind_param("s", $searchTerm);
+  $stmt->execute();
+  $result = $stmt->get_result();
+} else {
+  $result = $conn->query("SELECT * FROM recipes ORDER BY id DESC");
+}
 ?>
 
 <!DOCTYPE html>
@@ -29,11 +39,6 @@ $result = $conn->query("SELECT * FROM recipes ORDER BY id DESC");
     .navbar-brand, .nav-link {
       color: white !important;
       font-weight: bold;
-    }
-
-    .search-bar {
-      text-align: right;
-      margin: 20px 0;
     }
 
     .card {
@@ -109,8 +114,8 @@ $result = $conn->query("SELECT * FROM recipes ORDER BY id DESC");
       <span class="navbar-toggler-icon"></span>
     </button>
     <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
-      <form class="d-flex" role="search">
-        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <form class="d-flex" role="search" method="GET" action="recipes.php">
+        <input class="form-control me-2" type="search" name="q" placeholder="Search" aria-label="Search" value="<?php echo htmlspecialchars($searchTerm); ?>">
         <button class="btn btn-light" type="submit"><i class="bi bi-search"></i></button>
       </form>
     </div>
@@ -119,25 +124,32 @@ $result = $conn->query("SELECT * FROM recipes ORDER BY id DESC");
 
 <!-- Recipe Grid -->
 <div class="container mt-4">
+  <?php if ($searchTerm): ?>
+    <h4>Search results for "<strong><?php echo htmlspecialchars($searchTerm); ?></strong>"</h4>
+  <?php endif; ?>
+
   <div class="row g-4">
-    <?php while ($recipe = $result->fetch_assoc()): ?>
-      <div class="col-md-4 col-sm-6">
-        <div class="card">
-          <div class="header">
-            <img src="<?php echo htmlspecialchars($recipe['image']); ?>" alt="<?php echo htmlspecialchars($recipe['title']); ?>">
+    <?php if ($result->num_rows > 0): ?>
+      <?php while ($recipe = $result->fetch_assoc()): ?>
+        <div class="col-md-4 col-sm-6">
+          <div class="card">
+            <div class="header">
+              <img src="<?php echo htmlspecialchars($recipe['image']); ?>" alt="<?php echo htmlspecialchars($recipe['title']); ?>">
+            </div>
+            <div class="text">
+              <h1 class="food"><?php echo htmlspecialchars($recipe['title']); ?></h1>
+              <i class="fa fa-clock"> <?php echo htmlspecialchars($recipe['prep_time']); ?></i>
+              <p class="info">Explore this delicious Filipino recipe and bring joy to your table.</p>
+            </div>
+            <a href="recipe_detail.php?id=<?php echo $recipe['id']; ?>" class="btn">Let's Cook!</a>
           </div>
-          <div class="text">
-            <h1 class="food"><?php echo htmlspecialchars($recipe['title']); ?></h1>
-            <i class="fa fa-clock"> <?php echo htmlspecialchars($recipe['prep_time']); ?></i>
-            <p class="info">Explore this delicious Filipino recipe and bring joy to your table.</p>
-          </div>
-          <a href="recipe_detail.php?id=<?php echo $recipe['id']; ?>" class="btn">Let's Cook!</a>
         </div>
-      </div>
-    <?php endwhile; ?>
+      <?php endwhile; ?>
+    <?php else: ?>
+      <p>No recipes found for "<?php echo htmlspecialchars($searchTerm); ?>".</p>
+    <?php endif; ?>
   </div>
 </div>
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
