@@ -189,9 +189,9 @@ $errorMessage = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : null;
         <button type="submit" class="btn btn-danger btn-sm">Delete Selected</button>
         <button type="submit" name="delete_all" value="1" class="btn btn-warning btn-sm" onclick="return confirm('Delete ALL recipes? This cannot be undone.')">Delete All</button>
       </div>
-      <div class="table-responsive">
-        <table class="table table-striped table-bordered">
-          <thead class="table-dark">
+      <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+        <table class="table table-striped table-bordered mb-0">
+          <thead class="table-dark" style="position: sticky; top: 0; z-index: 1;">
             <tr>
               <th><input type="checkbox" id="selectAll"></th>
               <th>ID</th>
@@ -216,6 +216,7 @@ $errorMessage = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : null;
           </tbody>
         </table>
       </div>
+
     </form>
   </div>
 
