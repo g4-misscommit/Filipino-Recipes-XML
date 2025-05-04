@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<recipes>
+<recipe id="suman">
+  <title>Suman Moron (Leyte Delicacy)</title>
+  <category>Dessert</category>
+  <prepTime>1.5 hrs</prepTime>
+  <ingredients>
+    <item>Glutinous rice flour</item>
+    <item>Coconut milk</item>
+    <item>Cocoa powder</item>
+    <item>Sugar</item>
+    <item>Banana leaves</item>
+  </ingredients>
+  <instructions>
+    <step>Cook chocolate and plain glutinous rice mixtures separately.</step>
+    <step>Layer and roll in banana leaves, then steam.</step>
+  </instructions>
+  <image>resources/suman_moron.jpg</image>
+</recipe>
+
+
+<recipe id="pinakbet">
+  <title>Pinakbet</title>
+  <category>Dinner</category>
+  <prepTime>45 mins</prepTime>
+  <ingredients>
+    <item>300g pork belly, sliced</item>
+    <item>1 cup squash, diced</item>
+    <item>1 cup string beans, cut into 2-inch pieces</item>
+    <item>1 cup eggplant, sliced</item>
+    <item>1 cup bitter melon (ampalaya), sliced</item>
+    <item>1 tomato, diced</item>
+    <item>1 onion, chopped</item>
+    <item>3 cloves garlic, minced</item>
+    <item>2 tbsp bagoong (shrimp paste)</item>
+    <item>1/2 cup water</item>
+    <item>Cooking oil</item>
+  </ingredients>
+  <instructions>
+    <step>Fry pork until browned and crispy. Set aside.</step>
+    <step>Sauté garlic, onion, and tomatoes until soft.</step>
+    <step>Add bagoong and mix well.</step>
+    <step>Add squash and water. Cook until slightly tender.</step>
+    <step>Add string beans, eggplant, and ampalaya. Simmer until cooked but still crisp.</step>
+    <step>Top with fried pork before serving.</step>
+  </instructions>
+  <image>resources/pinakbet.png</image>
+</recipe>
+
+<recipe id="kare-kare">
+  <title>Kare-Kare</title>
+  <category>Dinner</category>
+  <prepTime>1 hour 30 mins</prepTime>
+  <ingredients>
+    <item>1 kg oxtail (or beef shank/tripe), cut into pieces</item>
+    <item>1/2 cup peanut butter</item>
+    <item>1/4 cup ground toasted rice (optional, for thickening)</item>
+    <item>1 bundle string beans, cut into 2-inch pieces</item>
+    <item>1 banana heart (puso ng saging), sliced</item>
+    <item>1 bunch pechay (bok choy)</item>
+    <item>1 eggplant, sliced</item>
+    <item>1 onion, chopped</item>
+    <item>5 cloves garlic, minced</item>
+    <item>6 cups water (or beef broth)</item>
+    <item>Cooking oil</item>
+    <item>Salt and pepper to taste</item>
+    <item>Bagoong (shrimp paste), for serving</item>
+  </ingredients>
+  <instructions>
+    <step>Boil oxtail until tender (about 1–1.5 hours). Set aside broth.</step>
+    <step>Heat oil in a large pan. Sauté garlic and onion until fragrant.</step>
+    <step>Add boiled meat and some broth. Simmer.</step>
+    <step>Stir in peanut butter until fully dissolved.</step>
+    <step>Add ground rice to thicken the sauce (optional).</step>
+    <step>Add vegetables (string beans, banana heart, eggplant) and cook until tender.</step>
+    <step>Add pechay last and cook for 1–2 minutes.</step>
+    <step>Season with salt and pepper.</step>
+    <step>Serve hot with bagoong on the side.</step>
+  </instructions>
+  <image>resources/kare_kare.png</image>
+</recipe>
+</recipes>

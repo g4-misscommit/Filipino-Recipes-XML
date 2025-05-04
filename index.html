@@ -281,7 +281,7 @@
         <div class="col-md-4 mb-4 d-flex justify-content-center">
           <div class="recipe-card">
             <div class="ft-recipe__thumb">
-              <img src="resources/caldereta.png" alt="Kaldereta">
+              <img src="resources/suman.png" alt="Kaldereta">
             </div>
             <div class="ft-recipe__content">
               <header class="content__header">
@@ -305,7 +305,7 @@
                 A hearty Filipino stew made with tender beef, tomato sauce, and liver spread. Perfect for celebrations!
               </p>
               <footer class="content__footer">
-                <a href="index-recipe-detail.php">View Recipe</a>
+                <a href="#" onclick="showRecipe('suman')">View Recipe</a>
               </footer>
             </div>
           </div>
@@ -313,6 +313,39 @@
     
         <div class="col-md-4 mb-4 d-flex justify-content-center">
           <div class="recipe-card">
+            <div class="ft-recipe__thumb">
+              <img src="resources/pinakbet.png" alt="Kaldereta">
+            </div>
+            <div class="ft-recipe__content">
+              <header class="content__header">
+                <div class="row-wrapper">
+                  <h2 class="recipe-title">Kaldereta</h2>
+                </div>
+                <ul class="recipe-details">
+                  <li class="recipe-details-item time">
+                    <i class="ion ion-ios-clock-outline"></i>
+                    <span class="value">45</span>
+                    <span class="title">Minutes</span>
+                  </li>
+                  <li class="recipe-details-item ingredients">
+                    <i class="ion ion-ios-book-outline"></i>
+                    <span class="value">8</span>
+                    <span class="title">Ingredients</span>
+                  </li>
+                </ul>
+              </header>
+              <p class="description">
+                A hearty Filipino stew made with tender beef, tomato sauce, and liver spread. Perfect for celebrations!
+              </p>
+              <footer class="content__footer">
+                <a href="#" onclick="showRecipe('pinakbet')">View Recipe</a>
+              </footer>
+            </div>
+          </div>
+        </div>
+    
+        <div class="col-md-4 mb-4 d-flex justify-content-center">
+                <div class="recipe-card">
             <div class="ft-recipe__thumb">
               <img src="resources/kare-kare.png" alt="Kaldereta">
             </div>
@@ -338,40 +371,7 @@
                 A hearty Filipino stew made with tender beef, tomato sauce, and liver spread. Perfect for celebrations!
               </p>
               <footer class="content__footer">
-                <a href="index-recipe-detail.php">View Recipe</a>
-              </footer>
-            </div>
-          </div>
-        </div>
-    
-        <div class="col-md-4 mb-4 d-flex justify-content-center">
-                <div class="recipe-card">
-            <div class="ft-recipe__thumb">
-              <img src="resources/kaldereta.png" alt="Kaldereta">
-            </div>
-            <div class="ft-recipe__content">
-              <header class="content__header">
-                <div class="row-wrapper">
-                  <h2 class="recipe-title">Kaldereta</h2>
-                </div>
-                <ul class="recipe-details">
-                  <li class="recipe-details-item time">
-                    <i class="ion ion-ios-clock-outline"></i>
-                    <span class="value">45</span>
-                    <span class="title">Minutes</span>
-                  </li>
-                  <li class="recipe-details-item ingredients">
-                    <i class="ion ion-ios-book-outline"></i>
-                    <span class="value">8</span>
-                    <span class="title">Ingredients</span>
-                  </li>
-                </ul>
-              </header>
-              <p class="description">
-                A hearty Filipino stew made with tender beef, tomato sauce, and liver spread. Perfect for celebrations!
-              </p>
-              <footer class="content__footer">
-                <a href="index-recipe-detail.php">View Recipe</a>
+                <a href="#" onclick="showRecipe('kare-kare')">View Recipe</a>
               </footer>
             </div>
           </div>
@@ -382,6 +382,14 @@
   </div>
 </section>
 
+<!-- Recipe Modal -->
+<div class="modal fade" id="recipeModal" tabindex="-1" aria-labelledby="recipeModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content" id="recipe-modal-content">
+      <!-- AJAX content will be loaded here -->
+    </div>
+  </div>
+</div>
 
 
 
@@ -390,6 +398,20 @@
 <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
 <script>
   AOS.init();
+</script>
+
+
+
+<script>
+function showRecipe(recipeId) {
+  fetch('index-recipe-detail.php?recipe=' + recipeId)
+    .then(response => response.text())
+    .then(html => {
+      document.getElementById('recipe-modal-content').innerHTML = html;
+      const modal = new bootstrap.Modal(document.getElementById('recipeModal'));
+      modal.show();
+    });
+}
 </script>
 
 </body>
