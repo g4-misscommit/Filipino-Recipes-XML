@@ -235,7 +235,6 @@ $errorMessage = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : null;
   </div>
 </div>
 
-
 <!-- JavaScript to handle select all -->
 <script>
   document.getElementById('selectAll').addEventListener('change', function () {
@@ -244,14 +243,12 @@ $errorMessage = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : null;
   });
 </script>
 
-
   <!-- Export Recipes Section -->
   <div class="export-section text-center">
   <h2 class="section-title">Export Recipes</h2>
   <a href="export.php" class="btn btn-success m-2">Export as XML</a>
   <a href="export_csv.php" class="btn btn-warning m-2">Export as CSV</a>
 </div>
-
 
 <!-- Import Recipes Section -->
 <div class="import-section">
@@ -299,8 +296,6 @@ $errorMessage = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : null;
   </div>
 </div>
 
-
-
 <script>
 function addIngredient() {
   const ingredientsList = document.getElementById('ingredients-list');
@@ -322,7 +317,6 @@ function addInstruction() {
   instructionsList.appendChild(input);
 }
 </script>
-
 <script>
 const dropArea = document.getElementById('drop-area');
 const input = document.getElementById('image-input');
@@ -374,7 +368,6 @@ function removePreview() {
   document.getElementById('drop-message').style.display = 'flex';
 }
 </script>
-
 
 <script>
   const uploadForm = document.getElementById('uploadForm');

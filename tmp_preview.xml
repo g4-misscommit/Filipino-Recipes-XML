@@ -1,265 +1,211 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <recipes>
-<recipe id="21">
-  <title>Chicken Afritada</title>
-  <category>Dinner</category>
-  <prepTime>1 hour</prepTime>
-  <ingredients>
-    <item>1 kg chicken, cut into serving pieces</item>
-    <item>1 cup potatoes, diced</item>
-    <item>1 cup carrots, diced</item>
-    <item>1/2 cup green peas</item>
-    <item>1 red bell pepper, sliced</item>
-    <item>1 onion, chopped</item>
-    <item>5 cloves garlic, minced</item>
-    <item>2 cups tomato sauce</item>
-    <item>1 cup water</item>
-    <item>3 tbsp cooking oil</item>
-    <item>Salt and pepper to taste</item>
-  </ingredients>
-  <instructions>
-    <step>Heat oil and sauté garlic and onion until translucent.</step>
-    <step>Add chicken and cook until lightly browned.</step>
-    <step>Pour in tomato sauce and water. Simmer until chicken is tender.</step>
-    <step>Add potatoes and carrots. Cook until vegetables are tender.</step>
-    <step>Mix in green peas and bell pepper. Simmer for another 5 minutes.</step>
-    <step>Season with salt and pepper.</step>
-    <step>Serve hot with steamed rice.</step>
-  </instructions>
-  <image>resources/afritada.png</image>
-</recipe>
-
-<recipe id="22">
-  <title>Sinigang na Baboy</title>
-  <category>Dinner</category>
-  <prepTime>1 hour</prepTime>
-  <ingredients>
-    <item>1 kg pork belly, cut into chunks</item>
-    <item>1 pack sinigang mix (or fresh tamarind)</item>
-    <item>1 onion, quartered</item>
-    <item>2 tomatoes, quartered</item>
-    <item>1 bunch kangkong (water spinach)</item>
-    <item>1 cup sitaw (string beans)</item>
-    <item>1 radish, sliced</item>
-    <item>1 eggplant, sliced</item>
-    <item>6 cups water</item>
-    <item>Fish sauce to taste</item>
-  </ingredients>
-  <instructions>
-    <step>Boil pork in water with onions and tomatoes until pork is tender.</step>
-    <step>Add radish, sitaw, and eggplant. Cook until vegetables are half-cooked.</step>
-    <step>Pour in sinigang mix and stir well.</step>
-    <step>Add kangkong last and cook for 1–2 minutes.</step>
-    <step>Season with fish sauce.</step>
-    <step>Serve hot with steamed rice.</step>
-  </instructions>
-  <image>resources/sinigang_na_baboy.png</image>
-</recipe>
-
-<recipe id="23">
-  <title>Pinakbet</title>
-  <category>Dinner</category>
-  <prepTime>45 mins</prepTime>
-  <ingredients>
-    <item>300g pork belly, sliced</item>
-    <item>1 cup squash, diced</item>
-    <item>1 cup string beans, cut into 2-inch pieces</item>
-    <item>1 cup eggplant, sliced</item>
-    <item>1 cup bitter melon (ampalaya), sliced</item>
-    <item>1 tomato, diced</item>
-    <item>1 onion, chopped</item>
-    <item>3 cloves garlic, minced</item>
-    <item>2 tbsp bagoong (shrimp paste)</item>
-    <item>1/2 cup water</item>
-    <item>Cooking oil</item>
-  </ingredients>
-  <instructions>
-    <step>Fry pork until browned and crispy. Set aside.</step>
-    <step>Sauté garlic, onion, and tomatoes until soft.</step>
-    <step>Add bagoong and mix well.</step>
-    <step>Add squash and water. Cook until slightly tender.</step>
-    <step>Add string beans, eggplant, and ampalaya. Simmer until cooked but still crisp.</step>
-    <step>Top with fried pork before serving.</step>
-  </instructions>
-  <image>resources/pinakbet.png</image>
-</recipe>
-
-<recipe id="24">
-  <title>Bistek Tagalog</title>
-  <category>Dinner</category>
-  <prepTime>40 mins</prepTime>
-  <ingredients>
-    <item>500g beef sirloin, thinly sliced</item>
-    <item>1/4 cup soy sauce</item>
-    <item>3 tbsp calamansi juice (or lemon juice)</item>
-    <item>1 large onion, sliced into rings</item>
-    <item>2 cloves garlic, minced</item>
-    <item>Cooking oil</item>
-    <item>Salt and pepper to taste</item>
-  </ingredients>
-  <instructions>
-    <step>Marinate beef in soy sauce, calamansi juice, and garlic for at least 30 minutes.</step>
-    <step>Heat oil and fry onion rings. Set aside.</step>
-    <step>In the same pan, fry beef slices until cooked.</step>
-    <step>Pour remaining marinade and simmer beef until tender.</step>
-    <step>Top with fried onions before serving.</step>
-  </instructions>
-  <image>resources/bistek_tagalog.png</image>
-</recipe>
-
-<recipe id="25">
-  <title>Ginataang Hipon</title>
-  <category>Dinner</category>
+  <recipe id="1">
+  <title>Tapsilog</title>
+  <category>Breakfast</category>
   <prepTime>30 mins</prepTime>
   <ingredients>
-    <item>500g shrimp, cleaned</item>
-    <item>1 cup coconut milk</item>
-    <item>1 cup coconut cream</item>
-    <item>1 thumb-sized ginger, sliced</item>
-    <item>3 cloves garlic, minced</item>
-    <item>1 onion, chopped</item>
-    <item>1 red chili (optional)</item>
-    <item>Salt and pepper to taste</item>
+    <item>500g beef tapa, sliced thinly</item>
+    <item>4 cups cooked garlic fried rice (sinangag)</item>
+    <item>4 fried eggs (sunny side up)</item>
+    <item>2 tbsp cooking oil</item>
+    <item>Vinegar dipping sauce (optional)</item>
   </ingredients>
   <instructions>
-    <step>Sauté garlic, onion, and ginger until fragrant.</step>
-    <step>Add coconut milk and bring to a gentle simmer.</step>
-    <step>Add shrimp and cook until it turns pink.</step>
-    <step>Pour coconut cream and continue simmering until thickened.</step>
-    <step>Season with salt and pepper. Add chili if desired.</step>
-    <step>Serve hot with rice.</step>
+    <step>Heat oil in a pan and cook the beef tapa until browned and tender.</step>
+    <step>Prepare garlic fried rice and fry eggs to your preference.</step>
+    <step>Assemble a plate with tapa, sinangag, and egg (silog).</step>
+    <step>Serve with vinegar sauce on the side if desired.</step>
   </instructions>
-  <image>resources/ginataang_hipon.png</image>
+  <image>resources/tapsilog.png</image>
 </recipe>
 
-<recipe id="26">
-  <title>Paksiw na Bangus</title>
-  <category>Dinner</category>
-  <prepTime>35 mins</prepTime>
+<recipe id="2">
+  <title>Longsilog</title>
+  <category>Breakfast</category>
+  <prepTime>25 mins</prepTime>
   <ingredients>
-    <item>1 whole bangus (milkfish), cleaned and sliced</item>
-    <item>1/2 cup vinegar</item>
-    <item>1 cup water</item>
-    <item>1 thumb-sized ginger, sliced</item>
-    <item>3 cloves garlic, crushed</item>
-    <item>1 onion, sliced</item>
-    <item>2 pieces eggplant, sliced</item>
-    <item>Salt and pepper to taste</item>
+    <item>6 pieces longganisa (Filipino sweet sausage)</item>
+    <item>4 cups cooked garlic fried rice</item>
+    <item>4 fried eggs</item>
+    <item>Water for boiling</item>
   </ingredients>
   <instructions>
-    <step>Arrange bangus, eggplant, onion, ginger, and garlic in a pot.</step>
-    <step>Pour vinegar and water over the ingredients.</step>
-    <step>Season with salt and pepper.</step>
-    <step>Bring to a boil without stirring.</step>
-    <step>Simmer until fish is cooked and flavors are absorbed.</step>
-    <step>Serve hot with rice.</step>
+    <step>Boil longganisa in a small amount of water until water evaporates.</step>
+    <step>Let longganisa fry in its own oil until cooked and caramelized.</step>
+    <step>Prepare garlic fried rice and fry eggs.</step>
+    <step>Serve longganisa with sinangag and egg.</step>
   </instructions>
-  <image>resources/paksiw_na_bangus.png</image>
+  <image>resources/longsilog.png</image>
 </recipe>
 
-<recipe id="27">
-  <title>Pochero</title>
-  <category>Dinner</category>
-  <prepTime>1 hour 30 mins</prepTime>
+<recipe id="3">
+  <title>Bangsilog</title>
+  <category>Breakfast</category>
+  <prepTime>20 mins</prepTime>
   <ingredients>
-    <item>1 kg beef shank</item>
-    <item>2 saba bananas, sliced</item>
-    <item>1 sweet potato, diced</item>
-    <item>1 cup cabbage, chopped</item>
-    <item>1 cup pechay (bok choy)</item>
-    <item>1/2 cup green beans</item>
-    <item>1 can tomato sauce (250g)</item>
-    <item>6 cups water</item>
-    <item>Salt and pepper to taste</item>
+    <item>4 pieces boneless bangus (milkfish), marinated</item>
+    <item>4 cups garlic fried rice</item>
+    <item>4 fried eggs</item>
+    <item>Cooking oil for frying</item>
   </ingredients>
   <instructions>
-    <step>Boil beef until tender. Set aside broth.</step>
-    <step>Sauté garlic and onion, add beef, then tomato sauce.</step>
-    <step>Add broth back in and simmer.</step>
-    <step>Add sweet potatoes, saba bananas, and green beans.</step>
-    <step>When vegetables are almost cooked, add cabbage and pechay.</step>
-    <step>Season with salt and pepper.</step>
-    <step>Serve hot.</step>
+    <step>Fry the marinated bangus in hot oil until crispy and golden.</step>
+    <step>Prepare garlic fried rice and fry eggs.</step>
+    <step>Serve bangus with sinangag and egg.</step>
   </instructions>
-  <image>resources/pochero.png</image>
+  <image>resources/bangsilog.png</image>
 </recipe>
 
-<recipe id="28">
-  <title>Laing</title>
-  <category>Dinner</category>
+<recipe id="4">
+  <title>Champorado</title>
+  <category>Breakfast</category>
+  <prepTime>30 mins</prepTime>
+  <ingredients>
+    <item>1 cup glutinous rice</item>
+    <item>4 cups water</item>
+    <item>1/2 cup cocoa powder</item>
+    <item>3/4 cup sugar</item>
+    <item>Condensed milk for topping</item>
+  </ingredients>
+  <instructions>
+    <step>Boil glutinous rice in water until soft and porridge-like.</step>
+    <step>Stir in cocoa powder and sugar until well mixed.</step>
+    <step>Cook for another 5–10 minutes until thickened.</step>
+    <step>Serve hot with a drizzle of condensed milk.</step>
+  </instructions>
+  <image>resources/champorado.png</image>
+</recipe>
+
+<recipe id="5">
+  <title>Pandesal</title>
+  <category>Breakfast</category>
+  <prepTime>2 hours</prepTime>
+  <ingredients>
+    <item>3 1/4 cups all-purpose flour</item>
+    <item>1/2 cup sugar</item>
+    <item>1 tsp salt</item>
+    <item>1 packet instant yeast</item>
+    <item>1 cup warm milk</item>
+    <item>1/4 cup butter, melted</item>
+    <item>Breadcrumbs for coating</item>
+  </ingredients>
+  <instructions>
+    <step>Mix flour, sugar, salt, and yeast in a bowl.</step>
+    <step>Gradually add milk and melted butter; knead until smooth.</step>
+    <step>Let dough rise for 1 hour or until doubled in size.</step>
+    <step>Shape into small balls and roll in breadcrumbs.</step>
+    <step>Let rise again for 30 minutes.</step>
+    <step>Bake at 180°C (350°F) for 15–20 minutes until golden brown.</step>
+    <step>Serve warm.</step>
+  </instructions>
+  <image>resources/pandesal.png</image>
+</recipe>
+
+<recipe id="6">
+  <title>Arroz Caldo</title>
+  <category>Breakfast</category>
   <prepTime>45 mins</prepTime>
   <ingredients>
-    <item>200g dried taro leaves</item>
-    <item>400ml coconut milk</item>
-    <item>1 cup coconut cream</item>
-    <item>1/2 cup dried fish or shrimp (optional)</item>
+    <item>1 cup glutinous rice</item>
+    <item>1/2 kg chicken, cut into pieces</item>
     <item>1 thumb-sized ginger, sliced</item>
-    <item>3 cloves garlic, minced</item>
     <item>1 onion, chopped</item>
-    <item>2 red chilies, sliced (optional)</item>
+    <item>6 cups chicken broth</item>
+    <item>Fish sauce, to taste</item>
     <item>Salt and pepper to taste</item>
+    <item>Toasted garlic and spring onions for garnish</item>
+    <item>Calamansi or lemon wedges</item>
   </ingredients>
   <instructions>
-    <step>In a pot, arrange taro leaves without stirring once coconut milk is added.</step>
-    <step>Pour coconut milk and add garlic, onion, ginger, and dried seafood.</step>
-    <step>Simmer on low heat without stirring until leaves absorb the coconut milk.</step>
-    <step>Add coconut cream and chilies, then cook until oil surfaces.</step>
-    <step>Season with salt and pepper.</step>
-    <step>Serve hot with rice.</step>
+    <step>Sauté garlic, onion, and ginger until aromatic.</step>
+    <step>Add chicken pieces and cook until no longer pink.</step>
+    <step>Add rice and stir to coat with oil.</step>
+    <step>Pour in chicken broth and simmer until rice is soft and porridge-like.</step>
+    <step>Season with fish sauce, salt, and pepper.</step>
+    <step>Serve hot with toasted garlic, spring onions, and calamansi.</step>
   </instructions>
-  <image>resources/laing.png</image>
-</recipe>
-<recipe id="29">
-  <title>Kare-Kare</title>
-  <category>Dinner</category>
-  <prepTime>1 hour 30 mins</prepTime>
-  <ingredients>
-    <item>1 kg oxtail (or beef shank/tripe), cut into pieces</item>
-    <item>1/2 cup peanut butter</item>
-    <item>1/4 cup ground toasted rice (optional, for thickening)</item>
-    <item>1 bundle string beans, cut into 2-inch pieces</item>
-    <item>1 banana heart (puso ng saging), sliced</item>
-    <item>1 bunch pechay (bok choy)</item>
-    <item>1 eggplant, sliced</item>
-    <item>1 onion, chopped</item>
-    <item>5 cloves garlic, minced</item>
-    <item>6 cups water (or beef broth)</item>
-    <item>Cooking oil</item>
-    <item>Salt and pepper to taste</item>
-    <item>Bagoong (shrimp paste), for serving</item>
-  </ingredients>
-  <instructions>
-    <step>Boil oxtail until tender (about 1–1.5 hours). Set aside broth.</step>
-    <step>Heat oil in a large pan. Sauté garlic and onion until fragrant.</step>
-    <step>Add boiled meat and some broth. Simmer.</step>
-    <step>Stir in peanut butter until fully dissolved.</step>
-    <step>Add ground rice to thicken the sauce (optional).</step>
-    <step>Add vegetables (string beans, banana heart, eggplant) and cook until tender.</step>
-    <step>Add pechay last and cook for 1–2 minutes.</step>
-    <step>Season with salt and pepper.</step>
-    <step>Serve hot with bagoong on the side.</step>
-  </instructions>
-  <image>resources/kare_kare.png</image>
+  <image>resources/arroz_caldo.png</image>
 </recipe>
 
-<recipe id="30">
-  <title>Inihaw na Liempo</title>
-  <category>Dinner</category>
+<recipe id="7">
+  <title>Spam Silog</title>
+  <category>Breakfast</category>
+  <prepTime>20 mins</prepTime>
+  <ingredients>
+    <item>1 can Spam, sliced</item>
+    <item>4 cups cooked garlic fried rice</item>
+    <item>4 fried eggs</item>
+    <item>Cooking oil for frying</item>
+  </ingredients>
+  <instructions>
+    <step>Fry Spam slices in a pan until crispy.</step>
+    <step>Prepare garlic fried rice and fry eggs.</step>
+    <step>Assemble Spam, sinangag, and egg on a plate.</step>
+    <step>Serve hot.</step>
+  </instructions>
+  <image>resources/spam_silog.png</image>
+</recipe>
+
+<recipe id="8">
+  <title>Daing na Bangus</title>
+  <category>Breakfast</category>
+  <prepTime>30 mins</prepTime>
+  <ingredients>
+    <item>4 pieces daing na bangus (marinated milkfish)</item>
+    <item>Cooking oil for frying</item>
+    <item>Vinegar and garlic dipping sauce</item>
+  </ingredients>
+  <instructions>
+    <step>Heat oil in a pan and fry the milkfish until crispy and golden brown.</step>
+    <step>Drain on paper towels to remove excess oil.</step>
+    <step>Serve with vinegar dipping sauce and garlic rice.</step>
+  </instructions>
+  <image>resources/daing_na_bangus.png</image>
+</recipe>
+
+<recipe id="9">
+  <title>Beef Pares</title>
+  <category>Breakfast</category>
   <prepTime>1 hour</prepTime>
   <ingredients>
-    <item>1 kg pork belly, sliced</item>
-    <item>1/2 cup soy sauce</item>
-    <item>1/4 cup calamansi juice</item>
-    <item>5 cloves garlic, minced</item>
-    <item>1 tsp ground pepper</item>
-    <item>Salt to taste</item>
+    <item>500g beef brisket, cubed</item>
+    <item>4 cloves garlic, minced</item>
+    <item>1 onion, chopped</item>
+    <item>1/4 cup soy sauce</item>
+    <item>2 tbsp sugar</item>
+    <item>1 tsp black pepper</item>
+    <item>3 cups beef broth</item>
+    <item>Cooking oil</item>
   </ingredients>
   <instructions>
-    <step>Marinate pork belly in soy sauce, calamansi juice, garlic, pepper, and salt for at least 1 hour.</step>
-    <step>Grill over hot charcoal until fully cooked and slightly charred.</step>
-    <step>Serve with dipping sauce or rice.</step>
+    <step>Sauté garlic and onion until fragrant.</step>
+    <step>Add beef and cook until browned.</step>
+    <step>Pour soy sauce, sugar, and black pepper; mix well.</step>
+    <step>Pour beef broth and simmer until beef is tender.</step>
+    <step>Serve with garlic fried rice and a small bowl of beef soup.</step>
   </instructions>
-  <image>resources/inihaw_na_liempo.png</image>
+  <image>resources/beef_pares.png</image>
 </recipe>
 
+<recipe id="10">
+  <title>Corned Beef Silog</title>
+  <category>Breakfast</category>
+  <prepTime>20 mins</prepTime>
+  <ingredients>
+    <item>1 can corned beef</item>
+    <item>1 onion, sliced</item>
+    <item>2 cloves garlic, minced</item>
+    <item>4 cups cooked garlic fried rice</item>
+    <item>4 fried eggs</item>
+    <item>Cooking oil for frying</item>
+  </ingredients>
+  <instructions>
+    <step>Sauté garlic and onion until fragrant.</step>
+    <step>Add corned beef and cook for 5 minutes.</step>
+    <step>Prepare garlic fried rice and fry eggs.</step>
+    <step>Serve corned beef with sinangag and egg.</step>
+  </instructions>
+  <image>resources/cornedsilog.png</image>
+</recipe>
 </recipes>

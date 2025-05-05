@@ -15,7 +15,6 @@ if ($searchTerm) {
   // If no search term, just fetch all recipes
   $result = $conn->query("SELECT * FROM recipes");
 }
-
 ?>
 
 <!DOCTYPE html>
@@ -192,7 +191,6 @@ if ($searchTerm) {
   </style>
 </head>
 <body>
-
 <!-- Navbar -->
 <nav class="navbar navbar-expand-lg fixed-top">
   <div class="container-fluid ps-3">
@@ -215,7 +213,6 @@ if ($searchTerm) {
     </div>
   </div>
 </nav>
-
 <!-- Recipe Grid -->
 <div class="container">
   <?php if ($searchTerm): ?>
@@ -249,8 +246,6 @@ if ($searchTerm) {
     <?php endif; ?>
   </div>
 </div>
-
-
 
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
