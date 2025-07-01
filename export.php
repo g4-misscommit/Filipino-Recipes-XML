@@ -8,6 +8,7 @@ $xml = new SimpleXMLElement('<?xml version="1.0" encoding="UTF-8"?><recipes/>');
 // Add XSL stylesheet reference
 $dom = dom_import_simplexml($xml)->ownerDocument;
 $pi = $dom->createProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="export.xsl"');
+//$pi = $dom->createProcessingInstruction('xml-stylesheet', 'type="text/xsl" href="http://localhost/Filipino-Recipes-XML/exports/export.xsl"');
 $dom->insertBefore($pi, $dom->firstChild);
 
 // Build the XML
