@@ -2,7 +2,7 @@
 include('db.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $fileTmpPath = 'tmp_preview.xml';
+    $fileTmpPath = 'data/tmp_preview.xml';
 
     if (!file_exists($fileTmpPath)) {
         $error = urlencode("Preview file not found.");

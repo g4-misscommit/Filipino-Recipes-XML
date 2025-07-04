@@ -9,7 +9,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_FILES['xml_file'])) {
         exit;
     }
 
-    move_uploaded_file($tmp, 'tmp_preview.xml');
+    move_uploaded_file($tmp, 'data/tmp_preview.xml');
     http_response_code(200); // Let JS know it's OK
 } else {
     http_response_code(400);

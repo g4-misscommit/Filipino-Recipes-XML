@@ -1,8 +1,31 @@
 <?php 
+session_start();
 include('db.php');
 
 $recipeId = $_GET['id'] ?? null;
 $selectedRecipe = null;
+
+// Handle review form submission
+if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['submit_review'])) {
+    $name = trim($_POST['name']);
+    $email = trim($_POST['email']);
+    $rating = intval($_POST['rating']);
+    $comment = trim($_POST['comment']);
+
+    if ($recipeId && $name && $email && $rating >= 1 && $rating <= 5) {
+        $stmt = $conn->prepare("INSERT INTO reviews (recipe_id, name, email, rating, comment) VALUES (?, ?, ?, ?, ?)");
+        $stmt->bind_param("issis", $recipeId, $name, $email, $rating, $comment);
+        $stmt->execute();
+
+        // Store user info in session to avoid asking again
+        $_SESSION['reviewer_name'] = $name;
+        $_SESSION['reviewer_email'] = $email;
+
+        // Redirect to avoid form resubmission
+        header("Location: recipe_detail.php?id=" . $recipeId);
+        exit;
+    }
+}
 
 if ($recipeId) {
   $stmt = $conn->prepare("SELECT * FROM recipes WHERE id = ?");
@@ -19,6 +42,16 @@ if (!$selectedRecipe) {
 
 $ingredients = explode(';', $selectedRecipe['ingredients']);
 $instructions = explode(';', $selectedRecipe['instructions']);
+
+// Fetch reviews for this recipe
+$reviews = [];
+$stmt = $conn->prepare("SELECT name, rating, comment, created_at FROM reviews WHERE recipe_id = ? ORDER BY created_at DESC");
+$stmt->bind_param("i", $recipeId);
+$stmt->execute();
+$result = $stmt->get_result();
+while ($row = $result->fetch_assoc()) {
+    $reviews[] = $row;
+}
 ?>
 
 <!DOCTYPE html>
@@ -29,7 +62,7 @@ $instructions = explode(';', $selectedRecipe['instructions']);
   <title><?php echo htmlspecialchars($selectedRecipe['title']); ?> - SimplyTaste</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-  <link href="styles.css" rel="stylesheet">
+  <link href="assets/css/styles.css" rel="stylesheet">
   <style>
     :root {
       --primary-color: #6b3f2a;
@@ -231,5 +264,50 @@ $instructions = explode(';', $selectedRecipe['instructions']);
     </div>
   </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Reviews Section -->
+<div class="container mt-5">
+  <h2 class="section-title">Reviews</h2>
+
+  <?php if (count($reviews) > 0): ?>
+    <?php foreach ($reviews as $review): ?>
+      <div class="card mb-3">
+        <div class="card-body">
+          <h5 class="card-title"><?php echo htmlspecialchars($review['name']); ?> <small class="text-muted">rated <?php echo $review['rating']; ?>/5</small></h5>
+          <p class="card-text"><?php echo nl2br(htmlspecialchars($review['comment'])); ?></p>
+          <p class="card-text"><small class="text-muted"><?php echo date('F j, Y, g:i a', strtotime($review['created_at'])); ?></small></p>
+        </div>
+      </div>
+    <?php endforeach; ?>
+  <?php else: ?>
+    <p>No reviews yet. Be the first to review this recipe!</p>
+  <?php endif; ?>
+
+  <h3 class="mt-4">Add Your Review</h3>
+  <form method="POST" action="recipe_detail.php?id=<?php echo $recipeId; ?>">
+    <div class="mb-3">
+      <label for="name" class="form-label">Name</label>
+      <input type="text" class="form-control" id="name" name="name" required value="<?php echo htmlspecialchars($_SESSION['reviewer_name'] ?? ''); ?>">
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label">Email</label>
+      <input type="email" class="form-control" id="email" name="email" required value="<?php echo htmlspecialchars($_SESSION['reviewer_email'] ?? ''); ?>">
+    </div>
+    <div class="mb-3">
+      <label for="rating" class="form-label">Rating</label>
+      <select class="form-select" id="rating" name="rating" required>
+        <option value="">Select rating</option>
+        <?php for ($i = 1; $i <= 5; $i++): ?>
+          <option value="<?php echo $i; ?>"><?php echo $i; ?></option>
+        <?php endfor; ?>
+      </select>
+    </div>
+    <div class="mb-3">
+      <label for="comment" class="form-label">Comment</label>
+      <textarea class="form-control" id="comment" name="comment" rows="4"></textarea>
+    </div>
+    <button type="submit" name="submit_review" class="btn btn-primary">Submit Review</button>
+  </form>
+</div>
+
 </body>
 </html>

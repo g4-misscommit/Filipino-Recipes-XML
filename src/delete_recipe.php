@@ -35,7 +35,7 @@ while($row = $result->fetch_assoc()) {
     $recipe->addChild('image', htmlspecialchars($row['image']));
 }
 
-$xml->asXML('recipes.xml');
+$xml->asXML('data/recipes.xml');
 
 header("Location: admin.php");
 exit;

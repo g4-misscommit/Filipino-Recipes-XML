@@ -3,7 +3,7 @@ if (isset($_GET['recipe'])) {
     $recipeId = $_GET['recipe'];
 
     $xml = new DOMDocument;
-    $xml->load('featured_recipes.xml');
+    $xml->load('data/featured_recipes.xml');
 
     $xsl = new DOMDocument;
     $xsl->load('recipe-detail.xsl');

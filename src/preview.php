@@ -1,6 +1,6 @@
 <?php
 // Load the uploaded XML file
-$xmlFile = 'tmp_preview.xml';
+$xmlFile = 'data/tmp_preview.xml';
 $xslFile = 'preview.xsl';
 
 // Check if the XML file exists

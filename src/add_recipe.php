@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
   // Handle image upload
   $imagePath = '';
   if (isset($_FILES['image']) && $_FILES['image']['error'] === UPLOAD_ERR_OK) {
-    $uploadDir = 'resources/';
+  $uploadDir = 'assets/images/';
     $fileName = basename($_FILES['image']['name']);
     $targetFile = $uploadDir . $fileName;
 
@@ -42,7 +42,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $stmt->execute();
 
     // Load existing XML or create a new one
-    $xml = file_exists('recipes.xml') ? simplexml_load_file('recipes.xml') : new SimpleXMLElement('<recipes/>');
+    $xml = file_exists('data/recipes.xml') ? simplexml_load_file('data/recipes.xml') : new SimpleXMLElement('<recipes/>');
 
     // Determine the highest existing ID
     $lastId = 0;
@@ -70,7 +70,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
 
     $recipe->addChild('image', htmlspecialchars($imagePath));
 
-    $xml->asXML('recipes.xml');
+    $xml->asXML('data/recipes.xml');
 
     // Show success modal
     echo <<<HTML

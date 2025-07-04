@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
       width: 100%;
       max-width: 1050px;
       height: 700px;
-      background: url('resources/SimplyTaste.png') no-repeat center center;
+      background: url('assets/images/SimplyTaste.png') no-repeat center center;
       background-size: cover;
       border: 5px solid yellow;
       border-radius: 12px;
