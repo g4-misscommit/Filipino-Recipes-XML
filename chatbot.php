@@ -74,13 +74,55 @@ function getDeepseekResponse($userMessage) {
   <title>Chatbot - SimplyTaste</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
+        :root {
+      --primary-color: #6b3f2a;
+      --accent-color: #ffbd59;
+      --text-color: #333;
+      --hover-green: #43632f;
+    }
     body {
       font-family: 'Segoe UI', sans-serif;
       padding: 20px;
       background-color: #f5f5f5;
     }
+
+    #chat {
+      margin-top: 70px;
+      padding: 10px 16px;
+    }
+     .navbar {
+      background-color: white !important;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      padding: 0.5rem 1.6rem;
+    }
+
+    .navbar-brand {
+      font-weight: bold;
+      font-size: 1.5rem;
+    }
+
+    .navbar-brand span:first-child {
+      color: black;
+    }
+
+    .navbar-brand span:last-child {
+      color: var(--accent-color);
+    }
+
+    .navbar-nav .nav-link {
+      color: black !important;
+      font-weight: 700;
+      margin-right: 20px;
+      transition: background-color 0.3s;
+    }
+
+    .navbar-nav .nav-link:hover {
+      background-color: var(--accent-color);
+      color: white !important;
+      border-radius: 8px;
+    }
     .chat-container {
-      max-width: 600px;
+      width: auto;      
       margin: 0 auto;
       background: white;
       border-radius: 10px;
@@ -137,6 +179,26 @@ function getDeepseekResponse($userMessage) {
   </style>
 </head>
 <body>
+  <!-- Navbar -->
+<nav class="navbar navbar-expand-lg fixed-top">
+  <div class="container-fluid ps-3">
+    <a class="navbar-brand me-3" href="index.html">
+      <span>Simply</span><span>Taste</span>
+    </a>
+    <button class="navbar-toggler ms-2" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
+      <ul class="navbar-nav me-3">
+        <li class="nav-item"><a class="nav-link" href="index.html#home">Home</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#about">About</a></li>
+        <li class="nav-item"><a class="nav-link" href="index.html#menu">Menu</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<section id = 'chat'>
   <div class="chat-container">
     <div class="chat-messages" id="chatMessages">
       <!-- Chat messages will appear here -->
@@ -146,6 +208,7 @@ function getDeepseekResponse($userMessage) {
       <button type="submit">Send</button>
     </form>
   </div>
+  </section>
 
   <script>
     const chatMessages = document.getElementById('chatMessages');
