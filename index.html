@@ -11,7 +11,7 @@
   <style>
     :root {
       --primary-color: #6b3f2a;
-      --accent-color: #ffbd59;
+      --accent-color: #c69874;
       --light-gray: #f5f5f5;
       --text-dark: #000000;
       --hover-green: #43632f;
@@ -41,7 +41,7 @@
     }
 
     .navbar-brand span:first-child {
-      color: black;
+      color: rgb(49,30,1);
     }
 
     .navbar-brand span:last-child {
@@ -61,6 +61,8 @@
     }
 
     .navbar-nav .nav-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 5 10px 18px rgba(0,0,0,0.1);
       background-color: var(--accent-color);
       color: white !important;
       border-radius: 8px;
@@ -94,6 +96,13 @@
       padding: 20px 30px;
       background-color: var(--light-gray);
       border-radius: 20px;
+    }
+    .hero {
+      background: url('assets/index_imgs/background.png') no-repeat center center;
+      background-size: cover;
+      padding: 100px 0;
+      color: var(--text-color);
+      position: relative;
     }
 
     .hero h2 {
@@ -130,7 +139,8 @@
     }
 
     .btn-custom:hover {
-      background-color: #e0a737;
+      transform: translateY(-3px);
+      background-color: var(--accent-color);
       color: #ffffff;
     }
 
@@ -234,7 +244,7 @@
     <div class="row align-items-center">
       <div class="col-md-6 mb-4 mb-md-0">
         <h2><span>Welcome to Simply</span><span>Taste!</span></h2>
-        <p>Your easy guide to Filipino cooking! Browse simple recipes by category, see ingredients and steps at a glance, and start cooking with no signups or fuss.</p>
+        <p>Your easy guide to Batangueño cooking! Browse simple recipes by category, see ingredients and steps at a glance, and start cooking with no signups or fuss.</p>
         <a href="recipes.php" class="btn btn-custom mt-3">Go to Recipes</a>
       </div>
       <div class="col-md-6 text-center" data-aos="zoom-out">
@@ -256,8 +266,8 @@
         <img src="assets/index_imgs/simply.png" class="img-fluid rounded" alt="About us img">
       </div>
       <div class="col-md-6">
-        <p><strong>SimplyTaste</strong> is your go-to online destination for discovering authentic Filipino recipes that are simple, quick, and delicious. Whether you're a seasoned cook or just starting out, our platform makes it easy for anyone to prepare traditional dishes using everyday ingredients.</p>
-        <p><strong>Mission:</strong><br>To bring the joy of Filipino cooking to every home — one simple recipe at a time. We aim to preserve Filipino culinary heritage while making it accessible to all through clean design, concise guides, and flavor-packed dishes.</p>
+        <p><strong>SimplyTaste</strong> is your go-to online destination for discovering authentic Batangueño recipes that are simple, quick, and delicious. Whether you're a seasoned cook or just starting out, our platform makes it easy for anyone to prepare traditional dishes using everyday ingredients.</p>
+        <p><strong>Mission:</strong><br>To bring the joy of Batangueño cooking to every home — one simple recipe at a time. We aim to preserve Filipino culinary heritage while making it accessible to all through clean design, concise guides, and flavor-packed dishes.</p>
       </div>
     </div>
   </div>

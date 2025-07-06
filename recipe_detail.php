@@ -66,13 +66,12 @@ while ($row = $result->fetch_assoc()) {
   <style>
     :root {
       --primary-color: #6b3f2a;
-      --accent-color: #ffbd59;
+      --accent-color: #c69874;
       --text-color: #333;
       --hover-green: #43632f;
     }
 
     body {
-      background-color: #fff;
       font-family: 'Segoe UI', sans-serif;
       color: var(--text-color);
       padding-top: 70px;
@@ -105,81 +104,165 @@ while ($row = $result->fetch_assoc()) {
     }
 
     .navbar-nav .nav-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 5 10px 18px rgba(0,0,0,0.1);
       background-color: var(--accent-color);
       color: white !important;
       border-radius: 8px;
     }
 
     .container {
-      max-width: 900px;
+      box-shadow: 0 5px 18px rgba(0, 0, 0, 0.08); /* subtle soft shadow */
+      max-width: 800px;
+      background-color: rgb(240, 233, 212);
     }
+
+    .recipe-container {
+      border-top-left-radius: 25px;
+      border-top-right-radius: 25px;
+      padding: 20px;}
+
+    .recipe-header {
+      background-color: white;
+      display: flex;
+      align-items: flex-start;
+      border-radius: 25px;
+      flex-wrap: wrap;}
+
+    .recipe-header .text-content {
+      padding: 30px;
+      margin-top: 15px;
+      flex: 0.9;}
+
+    .recipe-header img.recipe-image {
+      max-width: 350px;
+      height: auto;
+      border-radius: 8px;}
 
     .recipe-title {
       font-weight: bold;
-      font-size: 2rem;
+      font-size: 3rem;
       margin-top: 20px;
-      color: var(--primary-color);
-    }
+      color: var(--primary-color);}
 
     .recipe-description {
       margin-bottom: 20px;
       font-size: 1rem;
-      color: #666;
-    }
+      color: #666;}
 
     .recipe-image {
       width: auto;
       height: 100%;
       border-radius: 15px;
       object-fit: cover;
-      margin-bottom: 20px;
-    }
+      margin-bottom: 20px;}
 
     .section-title {
       font-weight: bold;
       font-size: 1.3rem;
       color: var(--accent-color);
-      margin-top: 30px;
-    }
+      margin-top: 30px;}
 
     ul, ol {
       padding-left: 20px;
       font-size: 1rem;
-      color: var(--text-color);
-    }
+      color: var(--text-color);}
 
     .back-btn {
       margin-top: 20px;
       margin-bottom: 20px;
-      font-weight: 600;
-    }
+      font-weight: 600;}
     .related-section {
-      margin-bottom: 50px;
-    }
+      margin-bottom: 20px;}
 
     .related-recipes .card {
-      border: 2px solid var(--accent-color);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08); /* subtle soft shadow */
+      border: none; /* remove border */
       border-radius: 10px;
-      transition: transform 0.2s ease-in-out;
+      transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
     }
 
     .related-recipes .card:hover {
-      transform: scale(1.05);
-    }
+      transform: scale(1.05);}
 
     .related-recipes img {
-      border-radius: 10px 10px 0 0;
-    }
+      border-radius: 10px 10px 0 0;}
 
     .related-recipes .fw-bold {
       padding: 8px;
-      font-size: 0.95rem;
-    }
+      font-size: 0.95rem;}
 
     .section-subheading {
       font-size: 1.1rem;
-      color: #555;
+      color: #555;}
+
+    .reviews-container {
+      background-color: #fefefe;         /* Light background */
+      padding: 30px;
+      border-bottom-left-radius: 25px;
+      border-bottom-right-radius: 25px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); /* Soft shadow */
+      margin-bottom: 40px;}
+
+    /* Section Title */
+    .reviews-container .section-title {
+      font-size: 38px;
+      font-weight: bold;
+      margin-bottom: 25px;
+      color: #5e3c30;}
+
+    /* Each review card */
+    .reviews-container .card {
+      border: 1px solid #e0e0e0;
+      border-radius: 10px;
+      background-color: #fffdf9;}
+
+    /* Reviewer's name and rating */
+    .reviews-container .card-title {
+      font-size: 18px;
+      font-weight: 600;
+      margin-bottom: 10px;
+      color: #5a2e2e;}
+
+    /* Review text */
+    .reviews-container .card-text {
+      font-size: 15px;
+      line-height: 1.5;
+      color: #444;}
+
+    /* Form styles */
+    .reviews-container form h3 {
+      font-size: 22px;
+      margin-top: 40px;
+      margin-bottom: 20px;
+      color: #3a2a28;}
+
+    .reviews-container form .form-label {
+      font-weight: 500;
+      color: #333;}
+
+    .reviews-container form .form-control,
+    .reviews-container form .form-select {
+      border-radius: 8px;
+      border: 1px solid #ccc;
+      transition: border-color 0.3s ease;}
+
+    .reviews-container form .form-control:focus,
+    .reviews-container form .form-select:focus {
+      border-color: #b06c49;
+      box-shadow: 0 0 0 0.15rem rgba(176, 108, 73, 0.25);
     }
+
+    .reviews-container button.btn-primary {
+      background-color: #8b4a39;
+      border: none;
+      border-radius: 8px;
+      padding: 10px 24px;
+      transition: background-color 0.3s ease;}
+
+    .reviews-container button.btn-primary:hover {
+      background-color: #6e382b;}
+
   </style>
 </head>
 <body>
@@ -203,36 +286,37 @@ while ($row = $result->fetch_assoc()) {
   </div>
 </nav>
 
-<div class="container mt-4">
-<a href="recipes.php" class="btn btn-outline-secondary back-btn">
-    <i class="bi bi-arrow-left-circle"></i> Back to Recipes
-  </a>
-</div>
 
-<!-- Recipe Detail -->
-<div class="container mt-4">
 
-  <h1 class="recipe-title"><?php echo htmlspecialchars($selectedRecipe['title']); ?> Recipe</h1>
-  <p class="recipe-description">
-    Category: <?php echo htmlspecialchars($selectedRecipe['category']); ?><br>
-    Prep Time: <?php echo htmlspecialchars($selectedRecipe['prep_time']); ?>
-  </p>
+  <!-- Recipe Detail -->
+  <div class="container recipe-container">
+    <a href="recipes.php" class="btn btn-outline-secondary back-btn">
+       <i class="bi bi-arrow-left-circle"></i> Back to Recipes
+    </a>
+    <div class="recipe-header d-flex align-items-start mb-4">
+      <div class="text-content me-4">
+        <h1 class="recipe-title"><?php echo htmlspecialchars($selectedRecipe['title']); ?> Recipe</h1>
+        <p class="recipe-description mb-0">
+          Category: <?php echo htmlspecialchars($selectedRecipe['category']); ?><br>
+          Prep Time: <?php echo htmlspecialchars($selectedRecipe['prep_time']); ?>
+        </p>
+      </div>
 
-  <img src="<?php echo htmlspecialchars($selectedRecipe['image']); ?>" alt="<?php echo htmlspecialchars($selectedRecipe['title']); ?>" class="recipe-image">
+      <img src="<?php echo htmlspecialchars($selectedRecipe['image']); ?>" alt="<?php echo htmlspecialchars($selectedRecipe['title']); ?>" class="recipe-image img-fluid" style="max-width: 250px; height: auto;">
+    </div>
+    <div class="section-title">Ingredients</div>
+    <ul>
+      <?php foreach ($ingredients as $ingredient): ?>
+        <li><?php echo htmlspecialchars(trim($ingredient)); ?></li>
+      <?php endforeach; ?>
+    </ul>
 
-  <div class="section-title">Ingredients</div>
-  <ul>
-    <?php foreach ($ingredients as $ingredient): ?>
-      <li><?php echo htmlspecialchars(trim($ingredient)); ?></li>
-    <?php endforeach; ?>
-  </ul>
-
-  <div class="section-title">Directions</div>
-  <ol>
-    <?php foreach ($instructions as $step): ?>
-      <li><?php echo htmlspecialchars(trim($step)); ?></li>
-    <?php endforeach; ?>
-  </ol>
+    <div class="section-title">Directions</div>
+    <ol>
+      <?php foreach ($instructions as $step): ?>
+        <li><?php echo htmlspecialchars(trim($step)); ?></li>
+      <?php endforeach; ?>
+    </ol>
 
     <!-- Print Button -->
     <button onclick="window.print()" class="btn btn-outline-primary mt-4 no-print">
@@ -264,8 +348,9 @@ while ($row = $result->fetch_assoc()) {
     </div>
   </div>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
 <!-- Reviews Section -->
-<div class="container mt-5">
+<div class="container reviews-container">
   <h2 class="section-title">Reviews</h2>
 
   <?php if (count($reviews) > 0): ?>

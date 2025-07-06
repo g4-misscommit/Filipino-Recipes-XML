@@ -30,7 +30,7 @@ if ($searchTerm) {
   <style>
     :root {
       --primary-color: #6b3f2a;
-      --accent-color: #ffbd59;
+      --accent-color: #c69874;
       --light-gray: #f5f5f5;
       --text-dark: #000000;
       --hover-green: #43632f;
@@ -38,7 +38,7 @@ if ($searchTerm) {
 
     body {
       font-family: 'Segoe UI', sans-serif;
-      background-color: white;
+      background:rgb(240, 233, 212);
       color: var(--text-dark);
       padding-top: 60px; /* reduced from 70px */
     }
@@ -56,7 +56,7 @@ if ($searchTerm) {
     }
 
     .navbar-brand span:first-child {
-      color: black;
+      color: rgb(49,30,1);
     }
 
     .navbar-brand span:last-child {
@@ -76,6 +76,8 @@ if ($searchTerm) {
     }
 
     .navbar-nav .nav-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 5 10px 18px rgba(0,0,0,0.1);
       background-color: var(--accent-color);
       color: white !important;
       border-radius: 8px;
@@ -84,16 +86,18 @@ if ($searchTerm) {
     .search-bar input {
       border-radius: 8px;
     }
+    #heading2 {
+      color: rgb(49,30,1);
+    }
 
     .container {
-      max-width: 1300px;
+      max-width: 1100px;
       padding-top: 30px; /* reduced padding */
       padding-bottom: 50px;
     }
 
     .card-container {
-      background-color: var(--light-gray);
-      border-radius: 20px;
+      border-radius: 30px;
       padding: 20px;
       height: 100%;
     }
@@ -101,11 +105,11 @@ if ($searchTerm) {
     .card {
       position: relative;
       background-color: #fff;
-      border: 2px solid var(--accent-color);
-      border-radius: 15px;
+      border: 2px solid var(--primary-color);
+      border-radius: 25px;
       overflow: hidden;
       transition: transform 0.3s ease, box-shadow 0.3s ease;
-      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 6px 10px rgba(0, 0, 0, 0.05);
       height: 100%;
       display: flex;
       flex-direction: column;
@@ -114,7 +118,7 @@ if ($searchTerm) {
 
     .card:hover {
       transform: translateY(-5px);
-      box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+      box-shadow: 5 10px 18px rgba(0,0,0,0.1);
     }
 
     .card .header {
@@ -133,7 +137,7 @@ if ($searchTerm) {
     }
 
     .card .text h2 {
-      font-size: 1.25rem;
+      font-size: 1.50rem;
       font-weight: bold;
       margin-bottom: 8px;
       color: var(--primary-color);
@@ -142,7 +146,7 @@ if ($searchTerm) {
     .card .text i {
       margin-right: 8px;
       color: #777;
-      font-size: 0.95rem;
+      font-size: 0.75rem;
     }
 
     .card .info {
@@ -152,21 +156,21 @@ if ($searchTerm) {
     }
 
     .card .btn {
-      background-color:rgb(0, 0, 0);
+      background-color:rgb(49,30,1);
       color: white;
       text-align: center;
       padding: 10px;
       text-transform: uppercase;
       text-decoration: none;
-      font-weight: bold;
       transition: background 0.3s, color 0.3s;
       border-top: 1px solid #43632f;
       border-radius: 0;
     }
 
     .card .btn:hover {
-      background-color: #e0a737;
-      color: white;
+      background-color: #f0e9d4;
+      color: rgb(49,30,1);
+      
     }
 
     .menu-heading {
@@ -219,7 +223,7 @@ if ($searchTerm) {
     <h4>Search results for "<strong><?php echo htmlspecialchars($searchTerm); ?></strong>"</h4>
   <?php endif; ?>
 
-  <h2 class="text-center menu-heading">Our Recipes</h2>
+  <h2 id ="heading2" class="text-center menu-heading">Our Recipes</h2>
   <h3 class="text-center section-subheading">Simple. Delicious. Filipino.</h3>
 
   <div class="row g-4">

@@ -66,5 +66,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     header("Location: admin.php?import_success=$addedCount");
     exit;
     } else {
-    echo "No file uploaded. Wala nganiiii";
+    echo "No file uploaded.";
 }

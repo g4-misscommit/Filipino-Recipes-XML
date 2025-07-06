@@ -74,7 +74,7 @@ function getDeepseekResponse($userMessage) {
   <title>Chatbot - SimplyTaste</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
-        :root {
+    :root {
       --primary-color: #6b3f2a;
       --accent-color: #ffbd59;
       --text-color: #333;
