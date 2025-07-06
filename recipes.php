@@ -33,7 +33,7 @@ if ($searchTerm) {
       --accent-color: #c69874;
       --light-gray: #f5f5f5;
       --text-dark: #000000;
-      --hover-green: #43632f;
+      --hover-shade: #f0e9d4;
     }
 
     body {

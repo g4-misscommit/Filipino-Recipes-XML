@@ -68,7 +68,7 @@ while ($row = $result->fetch_assoc()) {
       --primary-color: #6b3f2a;
       --accent-color: #c69874;
       --text-color: #333;
-      --hover-green: #43632f;
+      --hover-shade: #f0e9d4;
     }
 
     body {
