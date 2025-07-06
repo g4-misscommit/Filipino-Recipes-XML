@@ -76,9 +76,9 @@ function getDeepseekResponse($userMessage) {
   <style>
     :root {
       --primary-color: #6b3f2a;
-      --accent-color: #ffbd59;
+      --accent-color: #c69874;
       --text-color: #333;
-      --hover-green: #43632f;
+      --hover-shade: #f0e9d4;
     }
     body {
       font-family: 'Segoe UI', sans-serif;
@@ -117,10 +117,13 @@ function getDeepseekResponse($userMessage) {
     }
 
     .navbar-nav .nav-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 5 10px 18px rgba(0,0,0,0.1);
       background-color: var(--accent-color);
       color: white !important;
       border-radius: 8px;
     }
+
     .chat-container {
       width: auto;      
       margin: 0 auto;
@@ -171,7 +174,7 @@ function getDeepseekResponse($userMessage) {
       border-bottom-right-radius: 0;
     }
     .message.bot {
-      background-color: #ffbd59;
+      background-color: #c69874;
       color: black;
       float: left;
       border-bottom-left-radius: 0;
