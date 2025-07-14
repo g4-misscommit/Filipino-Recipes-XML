@@ -42,6 +42,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $category = (string)$newRecipe->category;
         $prepTime = (string)$newRecipe->prepTime;
         $image = (string)$newRecipe->image;
+        // Normalize image path to use assets/images/ folder
+        if (strpos($image, 'resources/') === 0) {
+            $image = str_replace('resources/', 'assets/images/', $image);
+        }
 
         $ingredientsArray = [];
         foreach ($newRecipe->ingredients->item as $item) {

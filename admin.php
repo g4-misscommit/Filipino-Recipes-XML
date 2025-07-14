@@ -19,16 +19,26 @@ $errorMessage = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : null;
   <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
   <link href="styles.css" rel="stylesheet">
 
-  <style>
+<style>
+    :root {
+      --primary-color: #6b3f2a;
+      --accent-color: #c69874;
+      --light-gray: #f5f5f5;
+      --text-dark: #000000;
+      --hover-shade: #f0e9d4;
+    }
+
     body {
-      background-color: white;
+      background-color: var(--hover-shade);
       font-family: 'Segoe UI', sans-serif;
+      color: var(--text-dark);
       padding-top: 70px;
     }
 
     .navbar {
       background-color: white !important;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+      padding: 0.5rem 1.6rem;
     }
 
     .navbar-brand {
@@ -37,53 +47,45 @@ $errorMessage = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : null;
     }
 
     .navbar-brand span.simply {
-      color: black;
+      color: rgb(49, 30, 1);
     }
 
     .navbar-brand span.taste {
-      color: #ffbd59;
+      color: var(--accent-color);
     }
 
     .navbar-brand span.admin {
-      color: black;
+      color: var(--primary-color);
       font-weight: bold;
       font-size: 2rem;
       margin-left: 8px;
     }
 
-    .btn-logout {
-      background-color: black;
-      color: white;
-      border: none;
-    }
-
-    .btn-logout:hover {
-      background-color: #ffbd59;
-      color: white;
-    }
-
+    .btn-logout,
     .btn-preview {
-      background-color: black;
+      background-color: var(--primary-color);
       color: white;
       border: none;
+      transition: all 0.3s ease;
     }
 
+    .btn-logout:hover,
     .btn-preview:hover {
-      background-color: #ffbd59;
+      background-color: var(--accent-color);
       color: white;
     }
-
 
     .section-title {
       font-weight: bold;
       font-size: 24px;
       margin-bottom: 20px;
+      color: var(--primary-color);
     }
 
     .form-section,
     .export-section,
     .import-section {
-      background: #f5f5f5;
+      background: var(--light-gray);
       padding: 20px;
       margin-bottom: 30px;
       border-radius: 8px;
@@ -91,13 +93,48 @@ $errorMessage = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : null;
     }
 
     .btn-custom {
-      background-color: #c9a18b;
-      color: #3d1d0c;
+      background-color: var(--accent-color);
+      color: var(--primary-color);
       border: none;
     }
 
     .btn-custom:hover {
       background-color: #b98c77;
+    }
+
+    .table {
+      border: 1px solid #ddd;
+    }
+
+    .table th {
+      background-color: var(--primary-color);
+      color: white;
+      position: sticky;
+      top: 0;
+      z-index: 1;
+    }
+
+    .table td,
+    .table th {
+      vertical-align: middle;
+    }
+
+    .form-control:focus {
+      box-shadow: 0 0 0 0.2rem rgba(198, 152, 116, 0.25);
+      border-color: var(--accent-color);
+    }
+
+    .btn-danger,
+    .btn-warning {
+      transition: background-color 0.3s ease;
+    }
+
+    .btn-danger:hover {
+      background-color: #a83232;
+    }
+
+    .btn-warning:hover {
+      background-color: #e0a64e;
     }
   </style>
 </head>
@@ -181,44 +218,76 @@ $errorMessage = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : null;
     </form>
   </div>
 
-  <!-- Manage Recipes Section -->
-  <div class="form-section">
-    <h2 class="section-title">Manage Existing Recipes</h2>
-    <form method="POST" action="delete_recipe.php" onsubmit="return confirm('Are you sure you want to delete the selected recipe(s)?');">
-      <div class="mb-3">
-        <button type="submit" class="btn btn-danger btn-sm">Delete Selected</button>
-        <button type="submit" name="delete_all" value="1" class="btn btn-warning btn-sm" onclick="return confirm('Delete ALL recipes? This cannot be undone.')">Delete All</button>
-      </div>
-      <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
-        <table class="table table-striped table-bordered mb-0">
-          <thead class="table-dark" style="position: sticky; top: 0; z-index: 1;">
-            <tr>
-              <th><input type="checkbox" id="selectAll"></th>
-              <th>ID</th>
-              <th>Title</th>
-              <th>Category</th>
-              <th>Prep Time</th>
-            </tr>
-          </thead>
-          <tbody>
-            <?php
-              $result = $conn->query("SELECT * FROM recipes ORDER BY id DESC");
-              while ($row = $result->fetch_assoc()):
-            ?>
-              <tr>
-                <td><input type="checkbox" name="recipe_ids[]" value="<?php echo $row['id']; ?>"></td>
-                <td><?php echo $row['id']; ?></td>
-                <td><?php echo htmlspecialchars($row['title']); ?></td>
-                <td><?php echo htmlspecialchars($row['category']); ?></td>
-                <td><?php echo htmlspecialchars($row['prep_time']); ?></td>
-              </tr>
-            <?php endwhile; ?>
-          </tbody>
-        </table>
-      </div>
 
-    </form>
-  </div>
+      <!-- Manage Recipes Section -->
+<div class="form-section">
+  <h2 class="section-title">Manage Existing Recipes</h2>
+
+  <form method="POST" action="delete_recipe.php" onsubmit="return confirmAction(this);">
+    <div class="mb-3 d-flex gap-2 flex-wrap">
+      <button type="submit" name="update" class="btn btn-primary btn-sm">💾 Save Changes</button>
+      <button type="submit" name="delete" class="btn btn-danger btn-sm">🗑️ Delete Selected</button>
+      <button type="submit" name="delete_all" value="1" class="btn btn-warning btn-sm">⚠️ Delete All</button>
+    </div>
+
+    <div class="table-responsive" style="max-height: 400px; overflow-y: auto;">
+      <table class="table table-striped table-bordered mb-0">
+        <thead class="table-dark" style="position: sticky; top: 0; z-index: 1;">
+          <tr>
+            <th><input type="checkbox" id="selectAll"></th>
+            <th>ID</th>
+            <th>Title</th>
+            <th>Category</th>
+            <th>Prep Time</th>
+            <th>Ingredients</th>
+            <th>Instructions</th>
+            <th>Image</th>
+          </tr>
+        </thead>
+        <tbody>
+          <?php
+            $result = $conn->query("SELECT * FROM recipes ORDER BY id DESC");
+            while ($row = $result->fetch_assoc()):
+          ?>
+            <tr>
+              <td>
+                <input type="checkbox" name="recipe_ids[]" value="<?= $row['id']; ?>">
+              </td>
+              <td>
+                <?= $row['id']; ?>
+                <input type="hidden" name="id[]" value="<?= $row['id']; ?>">
+              </td>
+              <td><input type="text" name="title[]" class="form-control form-control-sm" value="<?= htmlspecialchars($row['title']); ?>"></td>
+              <td><input type="text" name="category[]" class="form-control form-control-sm" value="<?= htmlspecialchars($row['category']); ?>"></td>
+              <td><input type="text" name="prep_time[]" class="form-control form-control-sm" value="<?= htmlspecialchars($row['prep_time']); ?>"></td>
+              <td><textarea name="ingredients[]" class="form-control form-control-sm"><?= htmlspecialchars($row['ingredients']); ?></textarea></td>
+              <td><textarea name="instructions[]" class="form-control form-control-sm"><?= htmlspecialchars($row['instructions']); ?></textarea></td>
+              <td><input type="text" name="image[]" class="form-control form-control-sm" value="<?= htmlspecialchars($row['image']); ?>"></td>
+            </tr>
+          <?php endwhile; ?>
+        </tbody>
+      </table>
+    </div>
+  </form>
+</div>
+
+<script>
+  function confirmAction(form) {
+    if (form.delete_all && form.delete_all.clicked) {
+      return confirm("Delete ALL recipes? This cannot be undone.");
+    }
+    if (form.delete && form.delete.clicked) {
+      return confirm("Are you sure you want to delete the selected recipe(s)?");
+    }
+    return true;
+  }
+
+  document.querySelectorAll("button[type='submit']").forEach(btn => {
+    btn.addEventListener("click", () => { btn.form[btn.name].clicked = true; });
+  });
+</script>
+
+
 
 <!-- Error Modal -->
 <div class="modal fade" id="errorModal" tabindex="-1" aria-labelledby="errorModalLabel" aria-hidden="true">
@@ -243,22 +312,24 @@ $errorMessage = isset($_GET['error']) ? htmlspecialchars($_GET['error']) : null;
   });
 </script>
 
-  <!-- Export Recipes Section -->
-  <div class="export-section text-center">
-  <h2 class="section-title">Export Recipes</h2>
-  <a href="export.php" class="btn btn-success m-2">Export as XML</a>
-  <a href="export_csv.php" class="btn btn-warning m-2">Export as CSV</a>
-</div>
+    <div class="d-flex justify-content-between flex-wrap gap-4 my-4">
+      <!-- Export Recipes Section -->
+      <div class="export-section text-center flex-fill">
+        <h2 class="section-title">Export Recipes</h2>
+        <a href="export.php" class="btn btn-success m-2">Export as XML</a>
+        <a href="export_csv.php" class="btn btn-warning m-2">Export as CSV</a>
+      </div>
 
-<!-- Import Recipes Section -->
-<div class="import-section">
-  <h2 class="section-title">Import Recipes</h2>
-  <form id="uploadForm" enctype="multipart/form-data">
-    <label for="xml_file" class="form-label">Upload Recipe XML</label>
-    <input type="file" name="xml_file" id="xml_file" class="form-control" accept=".xml" required>
-    <button type="submit" class="btn btn-preview mt-2">Preview XML</button>
-    </form>
-</div>
+      <!-- Import Recipes Section -->
+      <div class="import-section text-center flex-fill">
+        <h2 class="section-title">Import Recipes</h2>
+        <form id="uploadForm" enctype="multipart/form-data">
+          <label for="xml_file" class="form-label">Upload Recipe XML</label>
+          <input type="file" name="xml_file" id="xml_file" class="form-control" accept=".xml" required>
+          <button type="submit" class="btn btn-preview mt-2">Preview XML</button>
+        </form>
+      </div>
+    </div>
 
 <!-- Preview Modal -->
 <div class="modal fade" id="previewModal" tabindex="-1" aria-hidden="true">
